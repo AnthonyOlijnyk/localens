@@ -24,8 +24,8 @@ Creates a new user.
 The body of the request is expected to be:
 ```
 {
-    username: string <= 255 chars, NOT NULL
-    email: string <= 255 chars, unique, NOT NULL
+    username: string <= 255 chars, **UNIQUE**, NOT NULL
+    email: string <= 255 chars, **UNIQUE**, NOT NULL
     password: string <= 255 chars, NOT NULL
 }
 ```
