@@ -1,0 +1,9 @@
+[run]
+source = user, core
+
+[report]
+show_missing = True
+omit =
+    __init__.py
+    */migrations/*
+    apps.py

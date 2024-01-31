@@ -16,6 +16,15 @@ python manage.py migrate
 # Run Server
 run `python manage.py runserver` to start the server on port 8000
 
+# Running tests
+run `pytest --cov-config=.coveragerc --cov` to show console output for test coverage.
+
+run `pytest --cov-report html --cov-config=.coveragerc --cov` to generate a web report showing test coverage. To view the generated report, go into the newly created `htmlcov` folder and open the `index.html` file in any type of browser.
+
+run `pytest` to run all tests.
+
+run `pytest <path/to/module>` to test specific modules.
+
 # API Routes that are currently available
 
 ## POST api/signup
