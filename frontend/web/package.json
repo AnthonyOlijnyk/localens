@@ -1,24 +1,24 @@
 {
-  "name": "frontend",
+  "name": "nestedit-react-main-layout",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.15",
-    "@mui/x-date-pickers": "^6.17.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "date-fns": "^2.30.0",
-    "leaflet": "^1.9.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-leaflet": "^4.2.1",
-    "react-router-dom": "^6.16.0",
-    "react-scripts": "5.0.1",
-    "universal-cookie": "^6.1.1",
-    "web-vitals": "^2.1.4"
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "jquery": "^3.6.0",
+    "react": "^17.0.2",
+    "react-datepicker": "^4.2.1",
+    "react-dom": "^17.0.2",
+    "react-jqueryui-datepicker": "^1.0.3",
+    "react-modal-video": "^1.2.8",
+    "react-owl-carousel": "^2.3.3",
+    "react-rangeslider": "^2.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-slick": "^0.28.1",
+    "simple-react-lightbox": "^3.6.8",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "sass": "^1.38.0",
+    "style-loader": "^3.2.1"
   }
 }
