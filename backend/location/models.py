@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
 
 class Location(models.Model):
@@ -22,3 +23,8 @@ class Location(models.Model):
     average_cost = models.DecimalField(max_digits=12, decimal_places=2)
     start_time = models.TimeField(default=timezone.now)
     end_time = models.TimeField(default=timezone.now)
+    accessibility_rating = models.DecimalField(default=1.0, max_digits=2, decimal_places=1)
+    capacity = models.IntegerField(
+        default=1,
+        validators=[MaxValueValidator(100000), MinValueValidator(1)]
+    )

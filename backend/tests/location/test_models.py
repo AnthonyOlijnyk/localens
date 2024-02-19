@@ -16,3 +16,5 @@ def test_attributes_set(location_factory):
     assert location.average_cost == 172
     assert location.start_time == datetime.time(10, 30, 0)
     assert location.end_time == datetime.time(18, 30, 0)
+    assert location.accessibility_rating == 4.0
+    assert location.capacity == 500

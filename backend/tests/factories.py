@@ -42,6 +42,8 @@ class LocationFactory(factory.django.DjangoModelFactory):
     average_cost = 172
     start_time = datetime.time(10, 30, 0)
     end_time = datetime.time(18, 30, 0)
+    accessibility_rating = 4.0
+    capacity = 500
 
     @factory.post_generation
     def post_save(self, create, extracted, **kwargs):
