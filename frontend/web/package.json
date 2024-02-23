@@ -47,6 +47,7 @@
   "devDependencies": {
     "css-loader": "^6.2.0",
     "sass": "^1.38.0",
-    "style-loader": "^3.2.1"
+    "style-loader": "^3.2.1",
+    "webpack": "4.44.2"
   }
 }

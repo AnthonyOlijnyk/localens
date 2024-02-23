@@ -18,9 +18,7 @@ class MainLayout extends Component {
   render() {
     return (
         <>
-          <Headers/>
               <HomePage/>
-          <Footers/>
         </>
     );
   }

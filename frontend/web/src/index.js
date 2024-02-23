@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch }  from "react-router-dom";
 import SimpleReactLightbox               from 'simple-react-lightbox'
 
 //Layout default import from components.
-import defaultLayout                    from "./components/layouts/main";
+import defaultLayout                    from "./components/pages/landing/Landing";
 import secondLayout                     from "./components/layouts/main-two";
 
 //Import wrapping layout
@@ -28,6 +28,8 @@ import blog                             from "./components/pages/blog/BlogCompon
 import blogSidebar                      from "./components/pages/blog/BlogSidebar";
 import blogStandard                     from "./components/pages/blog/BlogStandard";
 import blogDetails                      from "./components/pages/blog/BlogDetails";
+import signin                           from "./components/pages/signin/SignIn";
+import register                         from "./components/pages/register/Register"
 
 
 //Initializations All Css
@@ -67,6 +69,8 @@ class Root extends React.Component{
                             <Route path={`${process.env.PUBLIC_URL}/blog-standard`} component={blogStandard} />
                             <Route path={`${process.env.PUBLIC_URL}/blog-details`} component={blogDetails} />
                             <Route path={`${process.env.PUBLIC_URL}/contact`} component={contact} />
+                            <Route path={`${process.env.PUBLIC_URL}/signin`} component={signin} />
+                            <Route path={`${process.env.PUBLIC_URL}/register`} component={register} />
                         </Layout>
                     </Switch>
             </BrowserRouter>
