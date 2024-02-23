@@ -25,7 +25,7 @@ function SignIn() {
     return (
         <div className="form-container">
             <div className="signin-form">
-                <h2 className="form-title">SignIn</h2>
+                <h2 className="form-title">Sign In</h2>
                 <div></div>
                 <form onSubmit={handleSubmit}>
                     <input

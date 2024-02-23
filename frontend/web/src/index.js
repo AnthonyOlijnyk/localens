@@ -50,29 +50,36 @@ class Root extends React.Component{
     render(){
         return(
             <BrowserRouter basename={"/"}>
-                    <Switch>
-                        <Route exact path='/' component={defaultLayout} />
-                        <Route path={`${process.env.PUBLIC_URL}/home-page-2`} component={secondLayout} />
-                        <Layout>
-                            <Route path={`${process.env.PUBLIC_URL}/about-us`} component={aboutUs} />
-                            <Route path={`${process.env.PUBLIC_URL}/destination`} component={destinations} />
-                            <Route path={`${process.env.PUBLIC_URL}/package`} component={packages} />
-                            <Route path={`${process.env.PUBLIC_URL}/package-sidebar`} component={packageSidebar} />
-                            <Route path={`${process.env.PUBLIC_URL}/package-standard`} component={packageStandard} />
-                            <Route path={`${process.env.PUBLIC_URL}/package-details`} component={packageDetails} />
-                            <Route path={`${process.env.PUBLIC_URL}/faq`} component={faq} />
-                            <Route path={`${process.env.PUBLIC_URL}/404`} component={error} />
-                            <Route path={`${process.env.PUBLIC_URL}/guide`} component={guide} />
-                            <Route path={`${process.env.PUBLIC_URL}/gallary`} component={gallary} />
-                            <Route path={`${process.env.PUBLIC_URL}/blog`} component={blog} />
-                            <Route path={`${process.env.PUBLIC_URL}/blog-sidebar`} component={blogSidebar} />
-                            <Route path={`${process.env.PUBLIC_URL}/blog-standard`} component={blogStandard} />
-                            <Route path={`${process.env.PUBLIC_URL}/blog-details`} component={blogDetails} />
-                            <Route path={`${process.env.PUBLIC_URL}/contact`} component={contact} />
-                            <Route path={`${process.env.PUBLIC_URL}/signin`} component={signin} />
-                            <Route path={`${process.env.PUBLIC_URL}/register`} component={register} />
-                        </Layout>
-                    </Switch>
+                <Switch>
+                    {/* Render sign-in and register pages without Layout */}
+                    <Route path={`${process.env.PUBLIC_URL}/signin`} component={signin} />
+                    <Route path={`${process.env.PUBLIC_URL}/register`} component={register} />
+                    
+                    {/* Render landing page without Layout */}
+                    <Route exact path='/' component={defaultLayout} />
+                    
+                    {/* Render home-page-2 without Layout */}
+                    <Route path={`${process.env.PUBLIC_URL}/home-page-2`} component={secondLayout} />
+                    
+                    {/* Render other pages with Layout */}
+                    <Layout>
+                        <Route path={`${process.env.PUBLIC_URL}/about-us`} component={aboutUs} />
+                        <Route path={`${process.env.PUBLIC_URL}/destination`} component={destinations} />
+                        <Route path={`${process.env.PUBLIC_URL}/package`} component={packages} />
+                        <Route path={`${process.env.PUBLIC_URL}/package-sidebar`} component={packageSidebar} />
+                        <Route path={`${process.env.PUBLIC_URL}/package-standard`} component={packageStandard} />
+                        <Route path={`${process.env.PUBLIC_URL}/package-details`} component={packageDetails} />
+                        <Route path={`${process.env.PUBLIC_URL}/faq`} component={faq} />
+                        <Route path={`${process.env.PUBLIC_URL}/404`} component={error} />
+                        <Route path={`${process.env.PUBLIC_URL}/guide`} component={guide} />
+                        <Route path={`${process.env.PUBLIC_URL}/gallary`} component={gallary} />
+                        <Route path={`${process.env.PUBLIC_URL}/blog`} component={blog} />
+                        <Route path={`${process.env.PUBLIC_URL}/blog-sidebar`} component={blogSidebar} />
+                        <Route path={`${process.env.PUBLIC_URL}/blog-standard`} component={blogStandard} />
+                        <Route path={`${process.env.PUBLIC_URL}/blog-details`} component={blogDetails} />
+                        <Route path={`${process.env.PUBLIC_URL}/contact`} component={contact} />
+                    </Layout>
+                </Switch>
             </BrowserRouter>
         );
     }

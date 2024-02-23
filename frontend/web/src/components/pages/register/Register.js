@@ -89,7 +89,7 @@ function Register() {
                 </form>
                 <div className="already-registered">
                     <p>Already Registered?</p>
-                    <button className="continue-button" onClick={() => history.push('/signin')}>Continue</button>
+                    <button className="continue-button" onClick={() => history.push('/signin')}>Sign In</button>
                 </div>
             </div>
         </div>
