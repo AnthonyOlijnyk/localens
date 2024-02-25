@@ -17,5 +17,4 @@ class LocationSerializer(ModelSerializer):
             'average_cost',
             'start_time',
             'end_time',
-            'reviews'
         )
