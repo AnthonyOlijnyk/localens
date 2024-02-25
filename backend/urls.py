@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 
 from user.views import SignUpView, LoginView
+from recommendation.views import RecommendView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/signup', SignUpView.as_view(), name='signup'),
     path('api/login', LoginView.as_view(), name='login')
+    path('api/recommend', RecommendView.as_view(), name = 'recommend')
 ]
