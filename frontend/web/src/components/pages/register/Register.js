@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import "./Register.css";
 
+const countryCodes = [
+        { name: 'Australia', code: '+61' },
+        { name: 'Canada', code: '+1' },
+        { name: 'India', code: '+91' },
+        { name: 'UAE', code: '+971' },
+        { name: 'USA', code: '+1' },
+        { name: 'UK', code: '+44' }
+        // Add as many countries as you need
+];
+
 function Register() {
     const [userData, setUserData] = useState({
         fullName: '',
-        country: 'UAE (+971)',
+        country: countryCodes[1].code,
         phoneNumber: '',
         email: '',
         password: '',
@@ -49,15 +59,25 @@ function Register() {
                         onChange={handleInputChange}
                     />
                     <div className="input-group">
-                        <select className="form-select" name="countryCode">
-                        <option value="+971">UAE (+971)</option>
-                        {/* other options */}
+                        <select 
+                            className="form-select" 
+                            name="country"
+                            value={userData.country}
+                            onChange={handleInputChange}
+                        >
+                            {countryCodes.map((country, index) => (
+                                <option key={index} value={country.code}>
+                                    {country.name} ({country.code})
+                                </option>
+                            ))}
                         </select>
                         <input
-                        type="tel"
-                        className="form-input phone-number-input"
-                        name="phoneNumber"
-                        placeholder="Phone Number"
+                            type="tel"
+                            className="form-input phone-number-input"
+                            name="phoneNumber"
+                            placeholder="Phone Number"
+                            value={userData.phoneNumber} // Controlled input
+                            onChange={handleInputChange}
                         />
                     </div>
 
