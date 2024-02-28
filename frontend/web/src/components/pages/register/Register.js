@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import "./Register.css";
 
 const countryCodes = [
-        { name: 'Australia', code: '+61' },
-        { name: 'Canada', code: '+1' },
-        { name: 'India', code: '+91' },
-        { name: 'UAE', code: '+971' },
-        { name: 'USA', code: '+1' },
-        { name: 'UK', code: '+44' }
-        // Add as many countries as you need
+    { name: 'Australia', code: '+61' },
+    { name: 'Canada', code: '+1' },
+    { name: 'India', code: '+91' },
+    { name: 'UAE', code: '+971' },
+    { name: 'USA', code: '+1' },
+    { name: 'UK', code: '+44' },
+    // Add as many countries as you need
 ];
 
 function Register() {
     const [userData, setUserData] = useState({
         fullName: '',
-        country: countryCodes[1].code,
+        userName: '',
+        country: countryCodes[1].code, // Default to Canada
         phoneNumber: '',
         email: '',
         password: '',
         confirmPassword: '',
     });
 
+    const [error, setError] = useState('');
     const history = useHistory();
 
     const handleInputChange = (e) => {
@@ -29,18 +32,47 @@ function Register() {
         setUserData({ ...userData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(userData);
-        // Redirect to home page
-        history.push('/home-page-2'); // Adjust the route as needed
+
+        // Check if the passwords match
+        if (userData.password !== userData.confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+        // Reset error message on successful validation
+        setError('');
+
+        // Construct full phone number
+        const fullPhoneNumber = `${userData.country}${userData.phoneNumber}`;
+
+        // Prepare the data to be sent to the backend
+        const userRegistrationData = {
+            fullName: userData.fullName,
+            userName: userData.userName,
+            phoneNumber: fullPhoneNumber,
+            email: userData.email,
+            password: userData.password,
+        };
+
+        // Use axios to send a POST request to your backend
+        try {
+            const response = await axios.post('http://localhost:8000/api/signup/', userRegistrationData);
+            console.log(response.data);
+            // Redirect to home page on successful registration
+            history.push('/home-page-2');
+        } catch (error) {
+            console.error('Registration error:', error);
+            setError(error.response?.data?.message || 'An error occurred during registration.');
+        }
     };
 
     return (
         <div className="form-container">
             <div className="register-form">
                 <h2 className="form-title">Register</h2>
-                <div></div>
+                {error && <p className="error-message">{error}</p>}
                 <form onSubmit={handleSubmit}>
                     <input
                         className="form-input"
@@ -59,8 +91,8 @@ function Register() {
                         onChange={handleInputChange}
                     />
                     <div className="input-group">
-                        <select 
-                            className="form-select" 
+                        <select
+                            className="form-select"
                             name="country"
                             value={userData.country}
                             onChange={handleInputChange}
@@ -76,11 +108,10 @@ function Register() {
                             className="form-input phone-number-input"
                             name="phoneNumber"
                             placeholder="Phone Number"
-                            value={userData.phoneNumber} // Controlled input
+                            value={userData.phoneNumber}
                             onChange={handleInputChange}
                         />
                     </div>
-
                     <input
                         className="form-input"
                         type="email"
@@ -109,11 +140,10 @@ function Register() {
                 </form>
                 <div className="already-registered">
                     <p>Already Registered?</p>
-                    <button className="continue-button" onClick={() => history.push('/signin')}>Sign In</button>
+                    <button className="sign-in-button" onClick={() => history.push('/signin')}>Sign In</button>
                 </div>
             </div>
         </div>
-        
     );
 }
 

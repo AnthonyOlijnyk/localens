@@ -38,22 +38,35 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
+    'corsheaders',  # Make sure this is added
     'user',
     'location',
     'review',
-    'recommendation'
+    'recommendation',
+    # Add your apps here
 ]
+# top of your settings.py
+def simple_middleware(get_response):
+    def middleware(request):
+        print(f"Incoming request: {request.method} {request.get_full_path()}")
+        response = get_response(request)
+        print(f"Outgoing response: {response.status_code}")
+        return response
+    return middleware
+
 
 MIDDLEWARE = [
+    'path.to.your.settings.simple_middleware',  # Add this line at the top
+    'corsheaders.middleware.CorsMiddleware',
+    # ... rest of your middleware
+    'corsheaders.middleware.CorsMiddleware',  # Make sure this is added at the top
     'django.middleware.security.SecurityMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'urls'
@@ -129,9 +142,19 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = True  # Allows all origins
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # Your frontend's address
+#     # Add any other origins you want to allow here
+# ]
+
+# CORS_ALLOW_CREDENTIALS = True is only needed if your frontend
+# needs to include credentials with CORS requests (cookies, Authorization headers, etc.)
 CORS_ALLOW_CREDENTIALS = True
 
-AUTH_USER_MODEL = 'user.User'
+# Specify the custom user model
+AUTH_USER_MODEL = 'user.User'  # Your custom user model, adjust as needed
 
+# Email backend for development
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
