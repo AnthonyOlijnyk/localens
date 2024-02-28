@@ -46,9 +46,9 @@ function SignIn() {
                     />
                     <button className="form-button" type="Login">Login</button>
                 </form>
-                <div className="Need-to-register">
+                <div className="need-to-register">
                     <p>Need to Register?</p>
-                    <button className="register-button" onClick={() => history.push('/register')}>Register</button>
+                    <button className="continue-button" onClick={() => history.push('/register')}>Register</button>
                 </div>
             </div>
         </div>

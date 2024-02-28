@@ -137,7 +137,7 @@
   appearance: none;
 }
 
-.SignIn-form h2 { /* Adjust the selector to target your specific heading for "Register" */
+.signin-form h2 { /* Adjust the selector to target your specific heading for "Signin" */
   margin-bottom: 20px; /* Adjust the value as needed to create space */
 }
 
