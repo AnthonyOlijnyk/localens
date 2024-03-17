@@ -1,74 +1,83 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+
+// Ensure your CSS file is correctly linked
 import "./SignIn.css";
 
 const SignIn = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-    const onLoginButtonClick = async () => {
-        const jsonData = { email, password };
+  const onLoginButtonClick = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
 
-        try {
-            const response = await fetch("http://localhost:8000/api/login", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(jsonData),
-            });
+    const jsonData = { email, password };
+    console.log('Attempting to log in with:', jsonData); // Debug: Log the data being sent
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+    try {
+      const response = await fetch("http://localhost:8000/api/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData),
+      });
 
-            const data = await response.json();
+      const data = await response.json(); // Attempt to parse the JSON response
 
-            if (data.success) {
-                const cookies = new Cookies();
-                cookies.set('jwt', data.token, { path: '/' });
-                navigate("/homepage");
-            } else {
-                setErrorMessage(`Error: ${data.error}`);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            setErrorMessage('Error during sign in');
+      if (response.ok) {
+        if (data.token) { // Assuming your API returns a "token" key on successful login
+          const cookies = new Cookies();
+          cookies.set('jwt', data.token, { path: '/' });
+          navigate("/homepage"); // Redirect to homepage on successful login
+        } else {
+          // Handle the case where the response is OK, but no token is provided
+          console.error('Login successful, but no token received:', data);
+          setErrorMessage('Login failed. Please try again.');
         }
-    };
+      } else {
+        // If the server responds with an error, display it
+        console.error('Login failed with response:', data);
+        setErrorMessage(data.message || 'Invalid email or password.');
+      }
+    } catch (error) {
+      console.error('Network or parsing error during sign in:', error);
+      setErrorMessage('Error during sign in. Please try again.');
+    }
+  };
 
-    return (
-        <div className="form-container">
-            <div className="signin-form">
-                <h2 className="form-title text-center">SIGN IN</h2>
-                <div className="error-message">{errorMessage}</div>
-                <input
-                    className="form-input"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    className="form-input"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className="form-button" onClick={onLoginButtonClick}>Login</button>
-                <div className="need-to-register">
-                    <p>Need to Register?</p>
-                    <button className="continue-button" onClick={() => navigate('/register')}>Register</button>
-                </div>
-            </div>
+  return (
+    <div className="form-container">
+      <form className="signin-form" onSubmit={onLoginButtonClick}>
+        <h2 className="form-title text-center">SIGN IN</h2>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        <input
+          className="form-input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          className="form-input"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className="form-button" type="submit">Login</button>
+        <div className="need-to-register">
+          <p>Need to Register?</p>
+          <button className="continue-button" onClick={() => navigate('/register')} type="button">Register</button>
         </div>
-    );
+      </form>
+    </div>
+  );
 };
 
 export default SignIn;

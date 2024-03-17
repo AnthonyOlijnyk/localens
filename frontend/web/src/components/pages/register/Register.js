@@ -11,6 +11,7 @@ function Register() {
     const [errorUsername, setErrorUsername] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
     const [errorConfirmPassword, setErrorConfirmPassword] = useState('');
+    const [generalError, setGeneralError] = useState('');
 
     const navigate = useNavigate();
 
@@ -70,12 +71,24 @@ function Register() {
                 },
                 body: JSON.stringify(jsonData),
             });
-            if (!response.ok) {
+            if (response.ok) {
+                navigate('/homepage');
+            } else if (response.status === 409) {
+                const errorData = await response.json();
+                // Assuming the server response includes a field 'error' indicating the issue
+                if (errorData.error.includes('username')) {
+                    setErrorUsername('Username already exists');
+                } else if (errorData.error.includes('email')) {
+                    setErrorEmail('Email already in use');
+                } else {
+                    setGeneralError('An unexpected error occurred');
+                }
+            } else {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            navigate('/homepage');
         } catch (error) {
             console.error('Error during registration:', error);
+            setGeneralError('Failed to register. Email or Username already exists.');
         }
     };
 
@@ -121,6 +134,7 @@ function Register() {
                     />
                     <p className="error-message">{errorConfirmPassword}</p>
                     <button className="form-button" type="submit">Register</button>
+                    {generalError && <p className="error-message">{generalError}</p>}
                 </form>
                 <div className="already-registered">
                     <p>Already Registered?</p>
