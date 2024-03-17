@@ -47,8 +47,8 @@ class GuideWrapper extends Component {
                    <div className="row">
                        <div className="col-lg-12 col-md-12 col-sm-12">
                            <div className="section-head head-left pb-40">
-                               <h5>Tour Guide</h5>
-                               <h2>All Guide Are 5 Year Expart In Travel</h2>
+                               <h5>Meet the Team</h5>
+                               <h2>The People Behind LocaLens:</h2>
                            </div>
                        </div>
                    </div>
@@ -58,66 +58,18 @@ class GuideWrapper extends Component {
                            <div className="guide-thumb">
                                <img src={guide1Img} alt="" className="img-fluid" />
                                <div className="guide-info">
-                                   <strong>Sakura Chen</strong>
-                                   <p>Tour Guide</p>
+                                   <strong>Anthony Olijnyk</strong>
+                                   <p>Developer</p>
                                    <ul className="guide-links">
                                        <li>
-                                           <Link to={"#"}><i className="bx bxl-instagram" /></Link>
+                                            <a href="https://www.linkedin.com/in/anthonyolijnyk/" target="_blank" rel="noopener noreferrer">
+                                                <i className="bx bxl-linkedin" />
+                                            </a>
                                        </li>
                                        <li>
-                                           <Link to={"#"}><i className="bx bxl-facebook" /></Link>
-                                       </li>
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-twitter" /></Link>
-                                       </li>
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-whatsapp" /></Link>
-                                       </li>
-                                   </ul>
-                               </div>
-                           </div>
-                       </div>
-                       <div className="guide-card">
-                           <div className="guide-thumb">
-                               <img src={guide3Img} alt="" className="img-fluid" />
-                               <div className="guide-info">
-                                   <strong>Sakura Chen</strong>
-                                   <p>Tour Guide</p>
-                                   <ul className="guide-links">
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-instagram" /></Link>
-                                       </li>
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-facebook" /></Link>
-                                       </li>
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-twitter" /></Link>
-                                       </li>
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-whatsapp" /></Link>
-                                       </li>
-                                   </ul>
-                               </div>
-                           </div>
-                       </div>
-                       <div className="guide-card">
-                           <div className="guide-thumb">
-                               <img src={guide4Img} alt="" className="img-fluid" />
-                               <div className="guide-info">
-                                   <strong>Sakura Chen</strong>
-                                   <p>Tour Guide</p>
-                                   <ul className="guide-links">
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-instagram" /></Link>
-                                       </li>
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-facebook" /></Link>
-                                       </li>
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-twitter" /></Link>
-                                       </li>
-                                       <li>
-                                           <Link to={"#"}><i className="bx bxl-whatsapp" /></Link>
+                                            <a href="mailto:anthony.olijnyk@torontomu.ca">
+                                                <i className="bx bx-mail-send" />
+                                            </a>
                                        </li>
                                    </ul>
                                </div>
@@ -127,26 +79,68 @@ class GuideWrapper extends Component {
                            <div className="guide-thumb">
                                <img src={guide2Img} alt="" className="img-fluid" />
                                <div className="guide-info">
-                                   <strong>Sakura Chen</strong>
-                                   <p>Tour Guide</p>
+                                   <strong>Jaspreet Sahota</strong>
+                                   <p>Developer</p>
                                    <ul className="guide-links">
                                        <li>
-                                           <Link to={"#"}><i className="bx bxl-instagram" /></Link>
+                                            <a href="https://www.linkedin.com/in/jaspreet-sahota-comp/" target="_blank" rel="noopener noreferrer">
+                                                <i className="bx bxl-linkedin" />
+                                            </a>
                                        </li>
                                        <li>
-                                           <Link to={"#"}><i className="bx bxl-facebook" /></Link>
+                                            <a href="mailto:jaspreet.sahota@torontomu.ca">
+                                                <i className="bx bx-mail-send" />
+                                            </a>
+                                       </li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                       <div className="guide-card">
+                           <div className="guide-thumb">
+                               <img src={guide3Img} alt="" className="img-fluid" />
+                               <div className="guide-info">
+                                   <strong>Naureen Kaur</strong>
+                                   <p>Developer</p>
+                                   <ul className="guide-links">
+                                       <li>
+                                            <a href="https://www.linkedin.com/in/naureenkaur/" target="_blank" rel="noopener noreferrer">
+                                                <i className="bx bxl-linkedin" />
+                                            </a>
                                        </li>
                                        <li>
-                                           <Link to={"#"}><i className="bx bxl-twitter" /></Link>
+                                            <a href="mailto:naureen.kaur@torontomu.ca">
+                                                <i className="bx bx-mail-send" />
+                                            </a>
+                                       </li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                       <div className="guide-card">
+                           <div className="guide-thumb">
+                               <img src={guide4Img} alt="" className="img-fluid" />
+                               <div className="guide-info">
+                                   <strong>Izza Sajotra</strong>
+                                   <p>Developer</p>
+                                   <ul className="guide-links">
+                                       <li>
+                                            <a href="https://www.linkedin.com/in/izzasajotra/" target="_blank" rel="noopener noreferrer">
+                                                <i className="bx bxl-linkedin" />
+                                            </a>
                                        </li>
                                        <li>
-                                           <Link to={"#"}><i className="bx bxl-whatsapp" /></Link>
+                                            <a href="mailto:izza.sajotra@torontomu.ca">
+                                                <i className="bx bx-mail-send" />
+                                            </a>
                                        </li>
                                    </ul>
                                </div>
                            </div>
                        </div>
                    </OwlCarousel>
+                   <br></br>
+                   <br></br>
                </div>
            </div>
            {/* ===============  Guide wrapper end =============== */}

@@ -1,22 +1,26 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import BreadCrumb from "./BreadCrumb";
 import AboutWrapper from "./AboutWrapper";
 import GuideWrapper from "./GuideWrapper";
 import Achievement from "./Achievement";
-import AboutReview from "./AboutReview";
-import AboutBlog from "./AboutBlog";
 
 class AboutUs extends Component {
+  guideWrapperRef = createRef(); // Step 1: Create a ref
+
+  scrollToGuide = () => { // Step 2: Function to scroll to the GuideWrapper
+    this.guideWrapperRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   render() {
     return (
        <>
-            <BreadCrumb/>
-            <AboutWrapper/>
-           <GuideWrapper/>
-           <Achievement/>
-           <AboutReview/>
-           <AboutBlog/>
-
+          <BreadCrumb/>
+          <AboutWrapper scrollToGuide={this.scrollToGuide}/> {/* Pass the function to AboutWrapper */}
+          <Achievement/>
+          {/* Attach the ref to the GuideWrapper component */}
+          <div ref={this.guideWrapperRef}>
+            <GuideWrapper/>
+          </div>
        </>
     );
   }

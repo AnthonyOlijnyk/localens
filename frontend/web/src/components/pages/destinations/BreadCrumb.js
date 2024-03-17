@@ -14,7 +14,7 @@ class BreadCrumb extends Component {
                                <h2>Destination</h2>
                                <ul className="breadcrumb-links">
                                    <li>
-                                       <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
+                                       <Link to={`${process.env.PUBLIC_URL}/homepage`}>Home</Link>
                                        <i className="bx bx-chevron-right" />
                                    </li>
                                    <li>Destination</li>

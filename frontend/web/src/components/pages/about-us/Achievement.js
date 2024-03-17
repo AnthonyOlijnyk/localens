@@ -27,7 +27,7 @@ class Achievement extends Component {
                                <div className="achievement-icon">
                                    <i className="flaticon-guide" />
                                </div>
-                               <h5>Tailored to Individual Preferences</h5>
+                               <h5>Designed to Align with Your Unique Interests</h5>
                            </div>
                        </div>
                        <div className="col-lg-3 col-md-6 col-sm-6 wow fadeInLeft animated" data-wow-duration="1500ms" data-wow-delay="200ms">
@@ -35,7 +35,7 @@ class Achievement extends Component {
                                <div className="achievement-icon">
                                    <i className="flaticon-trust" />
                                </div>
-                               <h5>Get the Best Recommendations</h5>
+                               <h5>Receive Personalized Recommendations</h5>
                            </div>
                        </div>
                        <div className="col-lg-3 col-md-6 col-sm-6 wow fadeInLeft animated" data-wow-duration="1500ms" data-wow-delay="400ms">
@@ -43,7 +43,7 @@ class Achievement extends Component {
                                <div className="achievement-icon">
                                    <i className="flaticon-experience" />
                                </div>
-                               <h5>Get the Best Travel Companion</h5>
+                               <h5>The Perfect Companion for Your Journey</h5>
                            </div>
                        </div>
                        <div className="col-lg-3 col-md-6 col-sm-6 wow fadeInLeft animated" data-wow-duration="1500ms" data-wow-delay="600ms">
@@ -51,7 +51,7 @@ class Achievement extends Component {
                                <div className="achievement-icon">
                                    <i className="flaticon-traveller" />
                                </div>
-                               <h5>Make the Most Use of Your Stay</h5>
+                               <h5>Enhance Every Moment of Your Visit</h5>
                            </div>
                        </div>
                    </div>

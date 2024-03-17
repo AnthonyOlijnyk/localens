@@ -14,14 +14,9 @@ import galleryGxx1Img from "../../../assets/images/gallary/g-xxl-1.png"
 import galleryGxx2Img from "../../../assets/images/gallary/g-xxl-2.png"
 import galleryGxx3Img from "../../../assets/images/gallary/g-xxl-3.png"
 
-import gallery17Img from "../../../assets/images/gallary/gl-17.png"
-import gallery16Img from "../../../assets/images/gallary/gl-16.png"
-import gallery14Img from "../../../assets/images/gallary/gl-14.png"
-
 import galleryGxl1Img from "../../../assets/images/gallary/g-xl-1.png"
 import galleryGxl2Img from "../../../assets/images/gallary/g-xl-2.png"
 import galleryGxl3Img from "../../../assets/images/gallary/g-xl-3.png"
-import galleryGxl4Img from "../../../assets/images/gallary/g-xl-4.png"
 
 import pm_sm_1  from "../../../assets/images/package/p-sm-1.png";
 import pm_sm_4  from "../../../assets/images/package/p-sm-4.png";

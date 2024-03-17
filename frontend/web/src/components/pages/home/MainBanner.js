@@ -82,7 +82,6 @@ class MainBanner extends Component {
                                 <div className="col-lg-3">
                                     <div className="calendar-input">
                                         <DatePicker selected={startDate} onChange={(date) => this.changeDatepickerHandeller(date)}  className="input-field check-in" placeholder="dd-mm-yy"/>
-                                        <i className="flaticon-calendar" />
                                     </div>
                                 </div>
                                 <div className="col-lg-3">

@@ -1,21 +1,21 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./Landing.css";
 
 function Landing() {
 
-    const history = useHistory();
+    const navigate = useNavigate();
     
     const handleLogin = (e) => {
         e.preventDefault();
         // Redirect to home page
-        history.push('/SignIn'); // Adjust the route as needed
+        navigate('/SignIn'); // Adjust the route as needed
     };
 
     const handleRegister = (e) => {
         e.preventDefault();
         // Redirect to home page
-        history.push('/Register'); // Adjust the route as needed
+        navigate('/Register'); // Adjust the route as needed
     };
 
     return (

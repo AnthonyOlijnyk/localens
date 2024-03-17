@@ -1,95 +1,76 @@
-import React                             from "react";
-import ReactDOM                          from "react-dom";
-import { BrowserRouter, Route, Switch }  from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-//Image LightBox
-import SimpleReactLightbox               from 'simple-react-lightbox'
+// Image LightBox
+import SimpleReactLightbox from 'simple-react-lightbox';
 
-//Layout default import from components.
-import defaultLayout                    from "./components/pages/landing/Landing";
-import secondLayout                     from "./components/layouts/main-two";
+// Layout default import from components.
+import DefaultLayout from './components/pages/landing/Landing';
+import SecondLayout from './components/layouts/main-two';
 
-//Import wrapping layout
-import Layout                           from "./components/app";
+// Import wrapping layout
+import Layout from './components/app';
 
-//Import all page from components
-import aboutUs                          from "./components/pages/about-us/AboutUs";
-import destinations                     from "./components/pages/destinations/Destinations";
-import packages                         from "./components/pages/package/Packages";
-import contact                          from "./components/pages/contact/Contact";
-import faq                              from "./components/pages/faq/Faq";
-import error                            from "./components/pages/404/404";
-import guide                            from "./components/pages/guide/GuideComponent";
-import gallary                          from "./components/pages/gallary/GalleryComponent";
-import packageSidebar                   from "./components/pages/package/PackageSidebar";
-import packageStandard                  from "./components/pages/package/PackageStanderd";
-import packageDetails                   from "./components/pages/package/PackageDetails";
-import blog                             from "./components/pages/blog/BlogComponent";
-import blogSidebar                      from "./components/pages/blog/BlogSidebar";
-import blogStandard                     from "./components/pages/blog/BlogStandard";
-import blogDetails                      from "./components/pages/blog/BlogDetails";
-import signin                           from "./components/pages/signin/SignIn";
-import register                         from "./components/pages/register/Register"
+// Import all pages from components
+import AboutUs from './components/pages/about-us/AboutUs';
+import Destinations from './components/pages/destinations/Destinations';
+import Packages from './components/pages/package/Packages';
+import Contact from './components/pages/contact/Contact';
+import FAQ from './components/pages/faq/Faq';
+import ErrorPage from './components/pages/404/404';
+import PackageSidebar from './components/pages/package/PackageSidebar';
+import PackageStandard from './components/pages/package/PackageStanderd';
+import PackageDetails from './components/pages/package/PackageDetails';
+import SignIn from './components/pages/signin/SignIn';
+import Register from './components/pages/register/Register';
 
-
-//Initializations All Css
+// Initializations All Css
 import './index.css';
 import './index.scss';
 
-//Default Warniing Error Hide
+// Default Warning Error Hide
 console.log = console.warn = console.error = () => {};
 
-/*
-* Version : 0.1
-* Event : Rendering all content to web.
-* Actions: Define all routes and page.
-* @return html
-* */
+class Root extends React.Component {
+  render() {
+    return (
+      <BrowserRouter basename={'/'}>
+        <Routes>
+          {/* Render sign-in and register pages without Layout */}
+          <Route path={`${process.env.PUBLIC_URL}/signin`} element={<SignIn />} />
+          <Route path={`${process.env.PUBLIC_URL}/register`} element={<Register />} />
 
-class Root extends React.Component{
-    render(){
-        return(
-            <BrowserRouter basename={"/"}>
-                <Switch>
-                    {/* Render sign-in and register pages without Layout */}
-                    <Route path={`${process.env.PUBLIC_URL}/signin`} component={signin} />
-                    <Route path={`${process.env.PUBLIC_URL}/register`} component={register} />
-                    
-                    {/* Render landing page without Layout */}
-                    <Route exact path='/' component={defaultLayout} />
-                    
-                    {/* Render home-page-2 without Layout */}
-                    <Route path={`${process.env.PUBLIC_URL}/home-page-2`} component={secondLayout} />
-                    
-                    {/* Render other pages with Layout */}
-                    <Layout>
-                        <Route path={`${process.env.PUBLIC_URL}/about-us`} component={aboutUs} />
-                        <Route path={`${process.env.PUBLIC_URL}/destination`} component={destinations} />
-                        <Route path={`${process.env.PUBLIC_URL}/package`} component={packages} />
-                        <Route path={`${process.env.PUBLIC_URL}/package-sidebar`} component={packageSidebar} />
-                        <Route path={`${process.env.PUBLIC_URL}/package-standard`} component={packageStandard} />
-                        <Route path={`${process.env.PUBLIC_URL}/package-details`} component={packageDetails} />
-                        <Route path={`${process.env.PUBLIC_URL}/faq`} component={faq} />
-                        <Route path={`${process.env.PUBLIC_URL}/404`} component={error} />
-                        <Route path={`${process.env.PUBLIC_URL}/guide`} component={guide} />
-                        <Route path={`${process.env.PUBLIC_URL}/gallary`} component={gallary} />
-                        <Route path={`${process.env.PUBLIC_URL}/blog`} component={blog} />
-                        <Route path={`${process.env.PUBLIC_URL}/blog-sidebar`} component={blogSidebar} />
-                        <Route path={`${process.env.PUBLIC_URL}/blog-standard`} component={blogStandard} />
-                        <Route path={`${process.env.PUBLIC_URL}/blog-details`} component={blogDetails} />
-                        <Route path={`${process.env.PUBLIC_URL}/contact`} component={contact} />
-                    </Layout>
-                </Switch>
-            </BrowserRouter>
-        );
-    }
+          {/* Render landing page without Layout */}
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<DefaultLayout />} />
+
+          {/* Render homepage without Layout */}
+          <Route path={`${process.env.PUBLIC_URL}/homepage`} element={<SecondLayout />} />
+
+          {/* Render other pages with Layout */}
+          {/* Nesting routes inside the Layout component */}
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<Layout />}>
+            <Route path='about-us' element={<AboutUs />} />
+            <Route path='destination' element={<Destinations />} />
+            <Route path='package' element={<Packages />} />
+            <Route path='package-sidebar' element={<PackageSidebar />} />
+            <Route path='package-standard' element={<PackageStandard />} />
+            <Route path='package-details' element={<PackageDetails />} />
+            <Route path='faq' element={<FAQ />} />
+            <Route path='404' element={<ErrorPage />} />
+            <Route path='contact' element={<Contact />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 }
 
 ReactDOM.render(
-    <React.StrictMode>
-        <SimpleReactLightbox>
-            <Root />
-        </SimpleReactLightbox>
-    </React.StrictMode>,
-    document.getElementById("root")
+  <React.StrictMode>
+    <SimpleReactLightbox>
+      <Root />
+    </SimpleReactLightbox>
+  </React.StrictMode>,
+  document.getElementById('root')
 );

@@ -35,20 +35,16 @@ class Headers extends Component {
                                             <div className="account-dropdown">
                                                 <ul>
                                                     <li className="account-el">
-                                                        <i className="bx bx-user-pin" />
-                                                        <Link to={"#"}>Sign in</Link>
-                                                    </li>
-                                                    <li className="account-el">
                                                         <i className="bx bxs-user-account" />
-                                                        <Link to={"#"}>My Account</Link>
+                                                        <Link to={"#"}>My Interests</Link>
                                                     </li>
                                                     <li className="account-el">
                                                         <i className="bx bx-extension" />
-                                                        <Link to={"#"}>Settings</Link>
+                                                        <Link to={"#"}>Account Settings</Link>
                                                     </li>
                                                     <li className="account-el">
                                                         <i className="bx bx-log-in-circle" />
-                                                        <Link to={"#"}>Log out</Link>
+                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.scrollTop}>Sign Out</NavLink>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -71,17 +67,8 @@ class Headers extends Component {
                                         <img src={secondLogo} alt="" className="img-fluid" />
                                     </div>
                                     <ul>
-                                        <li className="has-child-menu">
-                                            <Link to={"#"}>Home</Link>
-                                            <i className="fl flaticon-plus">+</i>
-                                            <ul className="sub-menu">
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.scrollTop}>Home Page 1</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/home-page-2`} className="sub-item" onClick={this.scrollTop}>Home Page 2</NavLink>
-                                                </li>
-                                            </ul>
+                                        <li>
+                                            <NavLink  activeClassName="active" to={`${process.env.PUBLIC_URL}/homepage`} onClick={this.scrollTop} >Home</NavLink >
                                         </li>
                                         <li>
                                             <NavLink  activeClassName="active" to={`${process.env.PUBLIC_URL}/about-us`} onClick={this.scrollTop} >About us</NavLink >
@@ -107,45 +94,6 @@ class Headers extends Component {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li className="has-child-menu">
-                                            <Link to={"#"}>Blogs</Link>
-                                            <i className="fl flaticon-plus">+</i>
-                                            <ul className="sub-menu">
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/blog`} className="sub-item" onClick={this.scrollTop}>Blog page</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/blog-sidebar`} className="sub-item" onClick={this.scrollTop}>Blog sidebar</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/blog-standard`} className="sub-item" onClick={this.scrollTop}>Blog standard</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/blog-details`} className="sub-item" onClick={this.scrollTop}>blog-details </NavLink>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className="has-child-menu">
-                                            <Link to={"#"}>Pages</Link>
-                                            <i className="fl flaticon-plus">+</i>
-                                            <ul className="sub-menu">
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/gallary`} className="sub-item" onClick={this.scrollTop}>gallary page</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/guide`} className="sub-item" onClick={this.scrollTop}>guide page</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/destination`} className="sub-item" onClick={this.scrollTop}>destination page</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/404`} className="sub-item" onClick={this.scrollTop}>404 Page</NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/faq`} className="sub-item" onClick={this.scrollTop}>FAQ page</NavLink>
-                                                </li>
-                                            </ul>
-                                        </li>
                                         <li>
                                             <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/contact`} onClick={this.scrollTop} >Contact Us</NavLink>
                                         </li>
@@ -159,20 +107,17 @@ class Headers extends Component {
                                             <div className="account-dropdown">
                                                 <ul>
                                                     <li className="account-el">
-                                                        <i className="bx bx-user-pin" />
-                                                        <Link to={`#`} >Sign in</Link>
-                                                    </li>
-                                                    <li className="account-el">
                                                         <i className="bx bxs-user-account" />
-                                                        <Link to={`#`} >My Account</Link>
+                                                        <Link to={`#`} >My Interests</Link>
                                                     </li>
                                                     <li className="account-el">
                                                         <i className="bx bx-extension" />
-                                                        <Link to={`#`} >Settings</Link>
+                                                        <Link to={`#`} >Account Settings</Link>
                                                     </li>
                                                     <li className="account-el">
                                                         <i className="bx bx-log-in-circle" />
-                                                        <Link to={`#`} >Log out</Link>
+                                                        {/* </li><Link to={`#`} >Log out</Link> */}
+                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.scrollTop}>Sign Out</NavLink>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -181,10 +126,10 @@ class Headers extends Component {
                                     <div className="sidebar-contact">
                                         <ul>
                                             <li className="sidebar-single-contact"><i className="bx bxs-phone" />
-                                                <Link to={`tel:+17632275032`} >+1 763-227-5032</Link>
+                                                <Link to={`tel:(123) 456 7890)`} >(123) 456 7890</Link>
                                             </li>
                                             <li className="sidebar-single-contact"><i className="bx bxs-envelope" />
-                                                <Link to={`mailto:info@example.com`} >info@example.com</Link>
+                                                <Link to={`mailto:info@example.com`} >localens@gmail.com</Link>
                                             </li>
                                         </ul>
                                     </div>

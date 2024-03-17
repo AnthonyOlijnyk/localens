@@ -1,59 +1,74 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import "./SignIn.css";
 
-function SignIn() {
-    const [userData, setUserData] = useState({
-        email: '',
-        password: '',
-    });
+const SignIn = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const history = useHistory();
+    const onLoginButtonClick = async () => {
+        const jsonData = { email, password };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(userData);
-        // Redirect to home page
-        history.push('/home-page-2'); // Adjust the route as needed
-    };
+        try {
+            const response = await fetch("http://localhost:8000/api/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData),
+            });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setUserData({ ...userData, [name]: value });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                const cookies = new Cookies();
+                cookies.set('jwt', data.token, { path: '/' });
+                navigate("/homepage");
+            } else {
+                setErrorMessage(`Error: ${data.error}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setErrorMessage('Error during sign in');
+        }
     };
 
     return (
         <div className="form-container">
             <div className="signin-form">
-                <h2 className="form-title">Sign In</h2>
-                <div></div>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        className="form-input"
-                        type="text"
-                        name="userName"
-                        placeholder="Username"
-                        value={userData.userName}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        className="form-input"
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={userData.password}
-                        onChange={handleInputChange}
-                    />
-                    <button className="form-button" type="Login">Login</button>
-                </form>
+                <h2 className="form-title text-center">SIGN IN</h2>
+                <div className="error-message">{errorMessage}</div>
+                <input
+                    className="form-input"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    className="form-input"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button className="form-button" onClick={onLoginButtonClick}>Login</button>
                 <div className="need-to-register">
                     <p>Need to Register?</p>
-                    <button className="continue-button" onClick={() => history.push('/register')}>Register</button>
+                    <button className="continue-button" onClick={() => navigate('/register')}>Register</button>
                 </div>
             </div>
         </div>
-        
     );
-}
+};
 
 export default SignIn;

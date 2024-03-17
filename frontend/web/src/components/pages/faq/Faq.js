@@ -13,7 +13,7 @@ class Faq extends Component {
                                 <h2>FAQ</h2>
                                 <ul className="breadcrumb-links">
                                     <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
+                                        <Link to={`${process.env.PUBLIC_URL}/homepage`}>Home</Link>
                                         <i className="bx bx-chevron-right" />
                                     </li>
                                     <li>FAQ</li>

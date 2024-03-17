@@ -4,11 +4,6 @@ import $ from "jquery";
 
 //Import Image
 import secondLogo           from "../../assets/images/logo-2.png"
-import paymentCard1Img      from "../../assets/images/payment/payment-card-1.png"
-import paymentCard2Img      from "../../assets/images/payment/payment-card-2.png"
-import paymentCard3Img      from "../../assets/images/payment/payment-card-3.png"
-import paymentCard4Img      from "../../assets/images/payment/payment-card-4.png"
-import paymentCard5Img      from "../../assets/images/payment/payment-card-5.png"
 
 class Footers extends Component {
     //Inherited Parent options.
@@ -204,102 +199,68 @@ class Footers extends Component {
                 {/* ==============  Footer area start================= */}
                 <div className="footer-area">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-lg-4 col-md-12">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-4 col-md-4 col-sm-12">
                                 <div className="footer-info">
                                     <div className="footer-logo">
                                         <img src={secondLogo} alt="" className="img-fluid" />
                                     </div>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid maxime aut ut voluptate
-                                        dolorum nisi ducimus ratione</p>
-                                    <div className="footer-social-icons">
-                                        <h5>Follow Us:</h5>
-                                        <ul>
-                                            <li>
-                                                <Link to={"#"}><i className="bx bxl-facebook" /></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={"#"}><i className="bx bxl-instagram" /></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={"#"}><i className="bx bxl-twitter" /></Link>
-                                            </li>
-                                            <li>
-                                                <Link to={"#"}><i className="bx bxl-dribbble" /></Link>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <p>LocaLens simplifies your adventures by putting every travel necessity within reach. 
+                                        With LocaLens, you can effortlessly discover hidden gems and create unforgettable 
+                                        memories. It's like having a personal tour guide, travel agent, and local expert, 
+                                        all wrapped into one intuitive platform.</p>
                                 </div>
                             </div>
-                            <div className="col-lg-8 col-md-12">
-                                <div className="row">
-                                    <div className="col-lg-5 col-md-5 col-sm-7">
-                                        <div className="footer-links">
-                                            <h5 className="widget-title">Contact Us</h5>
-                                            <div className="contact-box">
-                                                <span><i className="bx bx-phone" /></span>
+                            <div className="col-lg-3 col-md-3 col-sm-6">
+                                <div className="footer-links">
+                                    <h5 className="widget-title">Contact Us</h5>
+                                        <div className="contact-box">
+                                            <span><i className="bx bx-phone" /></span>
                                                 <div>
                                                     <a href="tel:123-456-7890">123-456-7890</a>
-                                                    <a href="tel:123-456-7890">123-456-7890</a>
                                                 </div>
-                                            </div>
-                                            <div className="contact-box">
-                                                <span><i className="bx bx-mail-send" /></span>
-                                                <div>
-                                                    <a href="mailto:info@example.com">localens@gmail.com</a>
-                                                    <a href="mailto:support@example.com">localen@gmail.com</a>
-                                                </div>
-                                            </div>
-                                            <div className="contact-box">
-                                                <span><i className="bx bx-location-plus" /></span>
-                                                <div>
-                                                    <Link to={"#"}>245 Church Street <br />
-                                                        Toronto, Ontario, Canada</Link>
-                                                </div>
+                                        </div>
+                                        <div className="contact-box">
+                                            <span><i className="bx bx-mail-send" /></span>
+                                            <div>
+                                                <a href="mailto:localens2024@example.com">localens2024@gmail.com</a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-lg-3 col-md-3 col-sm-5">
-                                        <div className="footer-links">
-                                            <h5 className="widget-title">Support</h5>
-                                            <div className="category-list">
-                                                <ul>
-                                                    <li>
-                                                        <Link to={`${process.env.PUBLIC_URL}/contact`} onClick={this.scrollTop} >Contact Us</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to={`${process.env.PUBLIC_URL}/about-us`} onClick={this.scrollTop}>About Us</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to={`${process.env.PUBLIC_URL}/destination`} onClick={this.scrollTop} >Destinations</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to={`${process.env.PUBLIC_URL}/blog`} onClick={this.scrollTop}>Our Blogs</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link to={`${process.env.PUBLIC_URL}/package`} className="sub-item" onClick={this.scrollTop}>Package</Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-4">
-                                        <div className="footer-links payment-links">
-                                            <h5 className="widget-title">We Accept:</h5>
-                                            <div className="payment-cards">
-                                                <img src={paymentCard2Img} alt="" className="img-fluid" />
-                                                <img src={paymentCard1Img} alt="" className="img-fluid" />
-                                                <img src={paymentCard3Img} alt="" className="img-fluid" />
-                                                <img src={paymentCard4Img} alt="" className="img-fluid" />
-                                                <img src={paymentCard5Img} alt="" className="img-fluid" />
+                                        <div className="contact-box">
+                                            <span><i className="bx bx-location-plus" /></span>
+                                            <div>
+                                                <a href="https://www.google.com/maps/dir//245+Church+St,+Toronto,+ON+M5B+1Z4/@43.6575591,-79.3818076,16z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d4cb357f11efa9:0x839bc2d3d2dbdb53!2m2!1d-79.3771995!2d43.6575553!3e0?authuser=0&entry=ttu" target="_blank" rel="noopener noreferrer">
+                                                    245 Church Street <br />
+                                                    Toronto, Ontario, Canada
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div className="col-lg-3 col-md-3 col-sm-6">
+                                    <div className="footer-links">
+                                        <h5 className="widget-title">Support</h5>
+                                        <div className="category-list">
+                                            <ul>
+                                            <li>
+                                                <Link to={`${process.env.PUBLIC_URL}/contact`} onClick={this.scrollTop} >Contact Us</Link>
+                                            </li>
+                                            <li>
+                                                <Link to={`${process.env.PUBLIC_URL}/about-us`} onClick={this.scrollTop}>About Us</Link>
+                                            </li>
+                                            <li>
+                                                <Link to={`${process.env.PUBLIC_URL}/destination`} onClick={this.scrollTop} >My Account</Link>
+                                            </li>
+                                            <li>
+                                                <Link to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.scrollTop}>Home</Link>
+                                            </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                         <div className="row">
-                            <div className="col-lg-12">
+                            <div className="col-lg-12 text-center">
                                 <div className="copyright-area">
                                     <p>Copyright 2024 | LocaLens | Designed By Jaspreet, Naureen, Anthony & Izza</p>
                                 </div>
