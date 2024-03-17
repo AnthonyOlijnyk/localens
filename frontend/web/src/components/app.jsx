@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Headers from "./common/headers";
 import Footers from "./common/footers";
+import { Outlet } from 'react-router-dom';
 
-//For Others route calling this layout
 class Layout extends Component {
     render() {
         return (
             <>
-                <Headers/>
-                {this.props.children}
-                <Footers/>
+                <Headers />
+                <Outlet />  {/* Nested routes will be rendered here */}
+                <Footers />
             </>
         );
     }
