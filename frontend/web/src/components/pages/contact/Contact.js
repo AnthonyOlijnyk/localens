@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
+import { Navigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 class AboutUs extends Component {
+    constructor(props) {
+        super(props);
+        const token = Cookies.get('jwt');
+        console.log(`Current JWT token: ${token ? 'Present' : 'Absent'}`);
+        this.state = {
+            // isAuthenticated is true if a token is present, false otherwise
+            isAuthenticated: token,
+        };
+    }
     componentDidMount(){
         this.scrollTop();
     }
@@ -13,6 +25,11 @@ class AboutUs extends Component {
         });
     }
   render() {
+    if (!this.state.isAuthenticated) {
+      // Log redirection for debugging purposes
+      console.log('Not authenticated, redirecting to sign-in...');
+      return <Navigate to="/signin" replace />;
+    }
     return (
         <>
             {/* ===============  breadcrumb area start =============== */}

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Navigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import MainBanner from "./MainBanner";
 import Packages from "./Packages";
 import Destinations from "./Destinations";
@@ -6,16 +8,28 @@ import Features from "./Features";
 import Review from "./Review";
 import Achievement from "./Achievement";
 
-//Define Default Content
 class HomePage extends Component {
-
   constructor(props) {
     super(props);
+    // Directly check for the presence of a JWT token and initialize state
+    const token = Cookies.get('jwt');
+    console.log(`Current JWT token: ${token ? 'Present' : 'Absent'}`);
     this.state = {
-
+      // isAuthenticated is true if a token is present, false otherwise
+      isAuthenticated: token,
     };
   }
+
+  // componentDidMount remains useful if you plan to add token validation or 
+  // session extension features in the future. For now, it's not strictly needed 
+  // since you're setting isAuthenticated based on the token's presence at initialization.
+
   render() {
+    if (!this.state.isAuthenticated) {
+      // Log redirection for debugging purposes
+      console.log('Not authenticated, redirecting to sign-in...');
+      return <Navigate to="/signin" replace />;
+    }
     return (
        <div>
 

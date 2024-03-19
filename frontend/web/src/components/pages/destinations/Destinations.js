@@ -4,6 +4,9 @@ import OwlCarousel from 'react-owl-carousel';
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import {Link} from "react-router-dom";
+import { Navigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 
 //Import Images
 import destinations1Img from "../../../assets/images/destination/d-1.png"
@@ -21,7 +24,22 @@ import destinations3Img from "../../../assets/images/destination/d-3.png"
 
 
 class AboutUs extends Component {
+    constructor(props) {
+    super(props);
+    // Directly check for the presence of a JWT token and initialize state
+    const token = Cookies.get('jwt');
+    console.log(`Current JWT token: ${token ? 'Present' : 'Absent'}`);
+    this.state = {
+      // isAuthenticated is true if a token is present, false otherwise
+      isAuthenticated: token,
+    };
+  }
   render() {
+    if (!this.state.isAuthenticated) {
+      // Log redirection for debugging purposes
+      console.log('Not authenticated, redirecting to sign-in...');
+      return <Navigate to="/signin" replace />;
+    }
 
       const destinationsOptions = {
           stagePadding: 1,

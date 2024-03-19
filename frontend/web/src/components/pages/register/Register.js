@@ -72,7 +72,7 @@ function Register() {
                 body: JSON.stringify(jsonData),
             });
             if (response.ok) {
-                navigate('/homepage');
+                navigate('/signin');
             } else if (response.status === 409) {
                 const errorData = await response.json();
                 // Assuming the server response includes a field 'error' indicating the issue

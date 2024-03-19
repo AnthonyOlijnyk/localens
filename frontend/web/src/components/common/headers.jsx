@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Link,NavLink}               from "react-router-dom";
 
+import Cookies from 'js-cookie';
 //Import Image
 import logoMain             from "../../assets/images/logo.png"
 import secondLogo           from "../../assets/images/logo-2.png"
@@ -12,6 +13,13 @@ class Headers extends Component {
             top: 0,
             behavior: "smooth"
         });
+    }
+
+    handleSingOut = () => {
+        //remove JWT Token 
+        Cookies.remove('jwt');
+        console.log('jwt token expired')
+        this.props.history.push('/signin');
     }
     render() {
         return (
@@ -44,7 +52,7 @@ class Headers extends Component {
                                                     </li>
                                                     <li className="account-el">
                                                         <i className="bx bx-log-in-circle" />
-                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.scrollTop}>Sign Out</NavLink>
+                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.handleSingOut}>Sign Out</NavLink>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -117,7 +125,7 @@ class Headers extends Component {
                                                     <li className="account-el">
                                                         <i className="bx bx-log-in-circle" />
                                                         {/* </li><Link to={`#`} >Log out</Link> */}
-                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.scrollTop}>Sign Out</NavLink>
+                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.handleSingOut}>Sign Out</NavLink>
                                                     </li>
                                                 </ul>
                                             </div>

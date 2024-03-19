@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
@@ -10,12 +10,20 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log('Redirecting to homepage...');
+      navigate("/homepage");
+    }
+  }, [isAuthenticated, navigate]);
 
   const onLoginButtonClick = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
     const jsonData = { email, password };
-    console.log('Attempting to log in with:', jsonData); // Debug: Log the data being sent
+    console.log('Attempting to log in with:', jsonData);
 
     try {
       const response = await fetch("http://localhost:8000/api/login", {
@@ -26,25 +34,18 @@ const SignIn = () => {
         body: JSON.stringify(jsonData),
       });
 
-      const data = await response.json(); // Attempt to parse the JSON response
+      const data = await response.json();
 
-      if (response.ok) {
-        if (data.token) { // Assuming your API returns a "token" key on successful login
-          const cookies = new Cookies();
-          cookies.set('jwt', data.token, { path: '/' });
-          navigate("/homepage"); // Redirect to homepage on successful login
-        } else {
-          // Handle the case where the response is OK, but no token is provided
-          console.error('Login successful, but no token received:', data);
-          setErrorMessage('Login failed. Please try again.');
-        }
+      if (response.ok && data.token) {
+        const cookies = new Cookies();
+        cookies.set('jwt', data.token, { path: '/' });
+        setIsAuthenticated(true); // Set isAuthenticated to true upon successful login
       } else {
-        // If the server responds with an error, display it
-        console.error('Login failed with response:', data);
+        console.error('Login failed:', data);
         setErrorMessage(data.message || 'Invalid email or password.');
       }
     } catch (error) {
-      console.error('Network or parsing error during sign in:', error);
+      console.error('Error during sign in:', error);
       setErrorMessage('Error during sign in. Please try again.');
     }
   };
