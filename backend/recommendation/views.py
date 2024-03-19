@@ -18,7 +18,7 @@ class MakeRecommendationView(APIView):
 
             ids = [index + 1 for index in indexes]
             final_ids = [id for id in ids if id in [location.id for location in Location.objects.filter(type=type)]]
-            return final_ids
+            return final_ids[:NUM_RECOMMENDATIONS]
                       
 
         def post(self, request):
