@@ -7,6 +7,7 @@ from operator import add
 from .utils.web_scrape import scrape_web_pages
 from .utils.model_prediction import predict
 
+from .recommendation_engine import make_recommendations
 from recommendation.constants import NUM_RECOMMENDATIONS
 
 from location.models import Location
@@ -35,4 +36,17 @@ class MakeRecommendationView(APIView):
 
             serializer = LocationSerializer(top_locations, many=True)
 
+            return JsonResponse(serializer.data, safe=False, status=200)
+
+        def post(self, request):
+            user_id = request.data.get('user_id')
+            type = request.data.get('type')
+        
+            if not user_id or not type:
+                return JsonResponse({'error': 'Missing user_id or type in request data'}, status=400)
+        
+            recommendations = make_recommendations(user_id, type)
+        
+            serializer = RecommendationSerializer(recommendations, many=True)
+        
             return JsonResponse(serializer.data, safe=False, status=200)
