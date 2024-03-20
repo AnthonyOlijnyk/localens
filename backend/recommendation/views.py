@@ -38,15 +38,3 @@ class MakeRecommendationView(APIView):
 
             return JsonResponse(serializer.data, safe=False, status=200)
 
-        def post(self, request):
-            user_id = request.data.get('user_id')
-            type = request.data.get('type')
-        
-            if not user_id or not type:
-                return JsonResponse({'error': 'Missing user_id or type in request data'}, status=400)
-        
-            recommendations = make_recommendations(user_id, type)
-        
-            serializer = RecommendationSerializer(recommendations, many=True)
-        
-            return JsonResponse(serializer.data, safe=False, status=200)
