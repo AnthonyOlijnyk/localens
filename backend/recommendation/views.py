@@ -7,7 +7,6 @@ from operator import add
 from .utils.web_scrape import scrape_web_pages
 from .utils.model_prediction import predict
 
-from .recommendation_engine import make_recommendations
 from recommendation.constants import NUM_RECOMMENDATIONS
 
 from location.models import Location
