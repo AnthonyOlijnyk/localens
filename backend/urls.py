@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path
 
 from user.views import SignUpView, LoginView
-from recommendation.views import MakeRecommendationView
+from recommendation.views import MakeRecommendationView, GetRecommendationsFromPastData
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/signup', SignUpView.as_view(), name='signup'),
     path('api/login', LoginView.as_view(), name='login'),
-    path('api/make-recommendation', MakeRecommendationView.as_view(), name = 'make-recommendation')
+    path('api/make-recommendation', MakeRecommendationView.as_view(), name='make-recommendation'),
+    path('api/get-recommendations-from-past-data', GetRecommendationsFromPastData.as_view(), name='get-recommendation-from-past-data')
 ]

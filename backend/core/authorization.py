@@ -12,7 +12,7 @@ def get_token(request):
     return request.META['HTTP_AUTHORIZATION'].split(' ')[1]
     
 def decode_token(token):
-    return jwt.decode(token, os.environ.get('JWT_SECRET_KEY'), algorithms=['HS256'])
+    return jwt.decode(token, os.environ.get('JWT_SECRET_KEY', 'secretkey'), algorithms=['HS256'])
 
 def check_user_authorized(request):
     token = get_token(request)

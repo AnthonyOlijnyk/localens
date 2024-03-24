@@ -87,3 +87,117 @@ After getting the token in the response on the frontend, you need to set the tok
 Then, when you are making requests that follow a user logging in, you need to include the cookie in the authorization header of the request with the format `Bearer ${cookie}`. [Here is an example of how to do that.](https://github.com/AnthonyOlijnyk/reservify/blob/a139b31d6fa65fd2489d1d9e204263d8b26dc197/frontend/src/pages/ReservePage.js#L81)
 
 Logging out does not need a backend interaction in order to work. All you need to do is clear the cookie that was originally set using `cookie.remove('token', { path: '/' })`.
+
+## POST api/make-recommendation
+**NOTE: YOU NEED THE BEARER TOKEN HEADER SET FOR THIS ENDPOINT TO WORK**
+
+*If you're testing this endpoint in postman, you need to set the authorization field to be bearer token, and then copy the token you get from the api/login endpoint into that field before making the request*
+
+Lists the top 5 recommendations based on the form input submitted by the user.
+
+The body of the request is expected to be:
+```
+{
+    type: string (Restaurant, Hotel, Activity)
+
+    average_rating: float (1-5)
+
+    latitude: float
+
+    longitude: foat
+
+    family_friendly: 1 / 0
+
+    cost: float
+
+    open_time: float (based on 24h clock. If the user wants something in between 9:30am-5:30pm, the value sent here should be 9.5)
+
+    close_time: float (based on 24h clock. If the user wants something in between 9:30am-5:30pm, the value sent here should be 17.5)
+
+    accessibility_rating: float (1-5)
+
+    capacity: int
+}
+```
+
+Will return
+```
+{
+    [
+        location_one,
+        location_two,
+        location_three,
+        location_four,
+        location_five
+    ]
+}
+```
+
+each location having the attributes layed out in the Location model which is:
+
+```
+type: 'Restaurant', 'Hotel', 'Activity'
+name: string
+about: long string
+average_rating: float
+latitude: float
+longitude: float
+is_family_friendly: 1 / 0
+average_cost: float
+start_time: float
+end_time: float
+accessibility_rating: float
+capacity: int
+```
+
+## GET api/get-recommendations-from-past-data
+**NOTE: YOU NEED THE BEARER TOKEN HEADER SET FOR THIS ENDPOINT TO WORK** 
+
+*If you're testing this endpoint in postman, you need to set the authorization field to be bearer token, and then copy the token you get from the api/login endpoint into that field before making the request*
+
+Returns the top 5 recommendations for each location type
+
+No body is required for this endpoint.
+
+Will return
+```
+{
+    Restaurant: [
+        restaurant_one,
+        restaurant_two,
+        restaurant_three,
+        restaurant_four,
+        restaurant_five
+    ],
+    Hotel: [
+        hotel_one,
+        hotel_two,
+        hotel_three,
+        hotel_four,
+        hotel_five
+    ],
+    Activity: [
+        activity_one,
+        activity_two,
+        activity_three,
+        activity_four,
+        activity_five
+    ]
+}
+```
+each restaurant / hotel / activity having the attributes layed out in the Location model which is:
+
+```
+type: 'Restaurant', 'Hotel', 'Activity'
+name: string
+about: long string
+average_rating: float
+latitude: float
+longitude: float
+is_family_friendly: 1 / 0
+average_cost: float
+start_time: float
+end_time: float
+accessibility_rating: float
+capacity: int
+```
