@@ -69,37 +69,14 @@ class MainBanner extends Component {
                             <div className="main-banner-content-2">
                                 <h2>Places to Visit in<br />
                                     <span className="element">Toronto</span> </h2>
-                                <h3>Visit Now!</h3>
                             </div>
                         </div>
                     </div>
                     <div className="find-form-2">
                         <form className="findfrom-wrapper">
-                            <div className="row">
-                                <div className="col-lg-3">
-                                    <input type="text" placeholder="Where To..." />
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="calendar-input">
-                                        <DatePicker selected={startDate} onChange={(date) => this.changeDatepickerHandeller(date)}  className="input-field check-in" placeholder="dd-mm-yy"/>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="custom-select">
-                                        <select>
-                                            <option value={0}>Travel Type</option>
-                                            <option value={1}>City Tours</option>
-                                            <option value={2}>Vacation Tours</option>
-                                            <option value={3}>Couple Tours </option>
-                                            <option value={4}>Adventure Tours</option>
-                                            <option value={5}>Group Tours</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="find-btn">
-                                        <Link to={"#"} className="btn-second"><i className="bx bx-search-alt" /> FIND NOW</Link>
-                                    </div>
+                            <div className="row centre">
+                                <div className="find-btn">
+                                    <Link to={`${process.env.PUBLIC_URL}/search`} className="btn-second"><i className="bx bx-search-alt" /> FIND CUSTOMIZED RECOMMENDATIONS!</Link>
                                 </div>
                             </div>
                         </form>

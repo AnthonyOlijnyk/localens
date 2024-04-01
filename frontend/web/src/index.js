@@ -18,6 +18,7 @@ import PackageStandard from './components/pages/package/PackageStanderd';
 import PackageDetails from './components/pages/package/PackageDetails';
 import SignIn from './components/pages/signin/SignIn';
 import Register from './components/pages/register/Register';
+import Search from './components/pages/search/Search';
 
 import './index.css';
 import './index.scss';
@@ -42,8 +43,10 @@ class Root extends React.Component {
                             <Route path="package-standard" element={<PackageStandard />} />
                             <Route path="package-details" element={<PackageDetails />} />
                             <Route path="faq" element={<FAQ />} />
-                            <Route path="404" element={<ErrorPage />} />
                             <Route path="contact" element={<Contact />} />
+                            <Route path="search" element={<Search />} />
+                            {/* Send all pages that do not exist to error page */}
+                            <Route path="*" element={<ErrorPage />} />
                         </Route>
                     </Routes>
                 </SimpleReactLightbox>

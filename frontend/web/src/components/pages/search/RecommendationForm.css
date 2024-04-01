@@ -1,0 +1,158 @@
+.search-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: white;
+  background-size: cover;
+}
+
+.search-form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin: auto;
+  position: relative;
+}
+
+.search-form-input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 16px;
+}
+
+.search-form-select {
+  width: 48%;
+  padding: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 16px;
+  display: inline-block; /* for side-by-side layout */
+}
+
+/* Adjust the second select to align with the first */
+.search-form-select + .search-form-select {
+  margin-left: 4%; /* spacing between the selects */
+}
+
+.search-form-button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0056b3;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form-button:hover {
+  background-color: #003d82;
+}
+
+/* Heading for the form */
+.search-heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* The continue button/link */
+/* Style for both buttons */
+.search-form-button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 25px; 
+  background-color: #007bff; 
+  color: white;
+  font-size: 18px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-transform: uppercase; 
+  margin-top: 10px; 
+}
+
+.search-form-button:hover {
+  background-color: #0056b3; 
+}
+
+.search-input-group {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px; /* Adjust the space between select and input */
+}
+
+.search-form-select {
+  width: 100%; /* Full width to match the input fields */
+  padding: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 16px;
+}
+
+/* Specific styles to make the select box and phone number input line up perfectly */
+.search-form-select {
+  flex-grow: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-form h2 { /* Adjust the selector to target your specific heading for "Signin" */
+  margin-bottom: 20px; /* Adjust the value as needed to create space */
+}
+
+.search-form-checkbox-group {
+  width: 100%; /* Match the width of other input fields */
+  padding: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  display: flex; /* Use flexbox to align label and checkbox */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Position label and checkbox on opposite ends */
+}
+
+.search-form-label {
+  margin: 0; /* Remove default margin */
+}
+
+.search-form-checkbox {
+  margin-left: 10px; /* Add some space between label and checkbox */
+  /* Additional styles, if necessary */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-form-container {
+    padding: 10px;
+  }
+  .search-form {
+    padding: 20px;
+  }
+  .search-form-select + .search-form-select {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    padding: 15px;
+  }
+}

@@ -16,7 +16,7 @@ class Error extends Component {
                                 <h2>404</h2>
                                 <ul className="breadcrumb-links">
                                     <li>
-                                        <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
+                                        <Link to={`${process.env.PUBLIC_URL}/homepage`}>Home</Link>
                                         <i className="bx bx-chevron-right" />
                                     </li>
                                     <li>404</li>
@@ -36,8 +36,9 @@ class Error extends Component {
                         </div>
                         <h2>That Page is Not Found.</h2>
                         <div className="error-btn">
-                            <Link to={`${process.env.PUBLIC_URL}/`}>GO TO HOME</Link>
+                            <Link to={`${process.env.PUBLIC_URL}/homepage`}>GO TO HOME</Link>
                         </div>
+                        <br></br>
                     </div>
                 </div>
             </div>
