@@ -7,7 +7,6 @@ import guide1Img from "../../../assets/images/guide/guide-1.png"
 import guide2Img from "../../../assets/images/guide/guide-2.png"
 import guide3Img from "../../../assets/images/guide/guide-3.png"
 import guide4Img from "../../../assets/images/guide/guide-4.png"
-import {Link} from "react-router-dom";
 
 class GuideWrapper extends Component {
   render() {

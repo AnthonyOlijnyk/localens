@@ -114,6 +114,7 @@ const RecommendationsForm = () => {
           onChange={(e) => setAverageRating(e.target.value)}
           min="1"
           max="5"
+          step="0.1"
           required
         />
 
@@ -122,11 +123,12 @@ const RecommendationsForm = () => {
           className="search-form-input"
           type="number"
           name="latitude"
-          placeholder="Latitude (40 to 50 N)"
+          placeholder="Latitude (42 to 45 N)"
           value={latitude}
           onChange={(e) => setLatitude(e.target.value)}
-          min="40"
-          max="50"
+          min="42"
+          max="45"
+          step="0.001"
           required
         />
 
@@ -135,11 +137,12 @@ const RecommendationsForm = () => {
           className="search-form-input"
           type="number"
           name="longitude"
-          placeholder="Longitude (70 to 90 W)"
+          placeholder="Longitude (78 to 82 W)"
           value={longitude}
           onChange={(e) => setLongitude(e.target.value)}
-          min="-90"
-          max="-70"
+          min="-82"
+          max="-78"
+          step="0.001"
           required
         />
 

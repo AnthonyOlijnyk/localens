@@ -32,7 +32,7 @@ class Headers extends Component {
                             <div className="col-lg-2 col-md-12 col-sm-12 col-xs-12">
                                 <div className="navbar-wrap">
                                     <div className="logo d-flex justify-content-between">
-                                        <Link to={`${process.env.PUBLIC_URL}/`} className="navbar-brand" onClick={this.scrollTop}><img src={logoMain} alt="" /></Link>
+                                        <Link to={`${process.env.PUBLIC_URL}/homepage`} className="navbar-brand" onClick={this.scrollTop}><img src={logoMain} alt="" /></Link>
                                     </div>
                                     <div className="navbar-icons">
                                         <div className="searchbar-open">

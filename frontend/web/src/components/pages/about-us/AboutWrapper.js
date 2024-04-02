@@ -8,12 +8,10 @@ class AboutWrapper extends Component {
         super(props);
 
         this.state = {
-            isOpen: false,
         };
     }
 
   render() {
-      const {isOpen } = this.state;
     return (
        <>
            {/* ===============  About wrapper area start =============== */}

@@ -7,16 +7,13 @@ import offer1Image from "../../../assets/images/package/offer-1.png"
 import offer2Image from "../../../assets/images/package/offer-2.png"
 import offer3Image from "../../../assets/images/package/offer-3.png"
 import {Link} from "react-router-dom";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 
 class MainBanner extends Component {
 
   constructor(props) {
       super(props);
       this.state = {
-          startDate:new Date(),
       };
   }
 
@@ -55,9 +52,6 @@ class MainBanner extends Component {
               }
           }
       };
-
-
-      const startDate =this.state.startDate;
 
       return (
         <>

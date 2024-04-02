@@ -4,9 +4,6 @@ import Cookies from 'js-cookie';
 import MainBanner from "./MainBanner";
 import Packages from "./Packages";
 import Destinations from "./Destinations";
-import Features from "./Features";
-import Review from "./Review";
-import Achievement from "./Achievement";
 
 class HomePage extends Component {
   constructor(props) {
@@ -65,9 +62,6 @@ class HomePage extends Component {
             <MainBanner/>
             <Packages/>
             <Destinations/>
-             <Achievement/>
-             <Review/>
-            <Features/>
            {/*---------End Imported All Sections-----------*/}
        </div>
     );

@@ -21,7 +21,6 @@ function Landing() {
     return (
         <div className="form-container">
             <div className="landing-form">
-                <h2 className="localens"></h2>
                 <div></div>
                 <form onSubmit={handleLogin}>
                     <button className="form-button" type="login">Login</button>
