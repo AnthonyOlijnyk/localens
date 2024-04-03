@@ -11,32 +11,13 @@ import guide4Img from "../../../assets/images/guide/guide-4.png"
 class GuideWrapper extends Component {
   render() {
       const guideWrapper = {
-          items: 3,
+          items: 4,
           loop: true,
           margin:25,
           smartSpeed: 1500,
           autoplay: false,
           dots: false,
           nav: true,
-          navText : ["<i class='bx bx-chevron-left' ></i>","<i class='bx bx-chevron-right'></i>"],
-          responsive:{
-              0:{
-                  items:1,
-                  nav:false,
-                  dots : false
-              },
-              600:{
-                  items:2,
-                  nav:false,
-                  dots : false,
-              },
-              1000:{
-                  items:3,
-                  dots: false,
-                  nav: true,
-                  loop:true
-              }
-          }
       };
     return (
        <>
