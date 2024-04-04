@@ -19,7 +19,7 @@ WEB_PAGES_TO_SCRAPE = {
     },
 }
 
-MODEL_PATH = 'model/model.pkl'
+MODEL_PATH = 'model/model_final.pkl'
 
 NUM_RECOMMENDATIONS = 5
 
