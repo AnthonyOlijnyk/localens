@@ -1,6 +1,6 @@
 import React, { Component, createRef } from "react";
 import RecommendationForm from "./RecommendationsForm";
-import RecommendationsResults from "./RecommendationsResults"; // Import your Recommendations Results component
+import SearchResults from "./SearchResults"; // Import your Recommendations Results component
 import Cookies from "js-cookie";
 import { Navigate } from 'react-router-dom';
 import BreadCrumb from "./BreadCrumb";
@@ -27,7 +27,7 @@ class Search extends Component {
 
     if (this.state.recommendations) {
       // If recommendations are available, render the recommendations results page
-      return <RecommendationsResults data={this.state.recommendations} />;
+      return <SearchResults data={this.state.recommendations} />;
     }
 
     return (

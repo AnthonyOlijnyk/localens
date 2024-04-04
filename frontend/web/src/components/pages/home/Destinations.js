@@ -7,14 +7,6 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 
 //Import Images
 import destinations1Img from "../../../assets/images/destination/d-1.png"
-import destinations4Img from "../../../assets/images/destination/d-4.png"
-import destinations5Img from "../../../assets/images/destination/d-5.png"
-import destinations6Img from "../../../assets/images/destination/d-6.png"
-import destinations7Img from "../../../assets/images/destination/d-7.png"
-import destinations8Img from "../../../assets/images/destination/d-8.png"
-import destinations9Img from "../../../assets/images/destination/d-9.png"
-import destinations10Img from "../../../assets/images/destination/d-10.png"
-import destinations11Img from "../../../assets/images/destination/d-11.png"
 import destinations2Img from "../../../assets/images/destination/d-2.png"
 import destinations3Img from "../../../assets/images/destination/d-3.png"
 
