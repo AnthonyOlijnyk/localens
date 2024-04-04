@@ -19,6 +19,7 @@ import PackageDetails from './components/pages/package/PackageDetails';
 import SignIn from './components/pages/signin/SignIn';
 import Register from './components/pages/register/Register';
 import Search from './components/pages/search/Search';
+import SearchResults from './components/pages/search/SearchResults';
 
 import './index.css';
 import './index.scss';
@@ -45,6 +46,7 @@ class Root extends React.Component {
                             <Route path="faq" element={<FAQ />} />
                             <Route path="contact" element={<Contact />} />
                             <Route path="search" element={<Search />} />
+                            <Route path="search-results" element={<SearchResults />} />
                             {/* Send all pages that do not exist to error page */}
                             <Route path="*" element={<ErrorPage />} />
                         </Route>

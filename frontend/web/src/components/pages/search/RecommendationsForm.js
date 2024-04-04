@@ -47,36 +47,35 @@ const RecommendationsForm = () => {
 
     try {
         const response = await fetch('http://localhost:8000/api/make-recommendation', {
-        method: 'POST',
-        headers: {
+          method: 'POST',
+          headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(dataToSubmit)
+          },
+          body: JSON.stringify(dataToSubmit)
         });
 
         // Attempt to read the response as JSON
         let responseData;
         if (response.headers.get("content-type")?.includes("application/json")) {
-        responseData = await response.json();
+          responseData = await response.json();
         } else {
-        // Non-JSON response, handle as text for debugging purposes
-        const textData = await response.text();
-        console.error('Received non-JSON response:', textData);
-        // You can display an error message or perform another type of error handling here
-        setGeneralError('Received non-JSON response from the server.');
-        return;
+          // Non-JSON response, handle as text for debugging purposes
+          const textData = await response.text();
+          console.error('Received non-JSON response:', textData);
+          // You can display an error message or perform another type of error handling here
+          setGeneralError('Received non-JSON response from the server.');
+          return;
         }
 
         // Handle the response data
         if (response.ok) {
-        console.log('Recommendations:', responseData);
-        // You might want to navigate to another route with the fetched recommendations
-        // navigate('/results', { state: { recommendations: responseData } });
+          console.log('Recommendations:', responseData);
+          navigate('/search-results', { state: { recommendations: responseData } });
         } else {
-        console.error('Failed to fetch recommendations:', responseData);
-        // Here you would handle HTTP errors and update the state or show an error message
-        setGeneralError(responseData.message || 'Failed to fetch recommendations.');
+          console.error('Failed to fetch recommendations:', responseData);
+          // Here you would handle HTTP errors and update the state or show an error message
+          setGeneralError(responseData.message || 'Failed to fetch recommendations.');
         }
     } catch (error) {
         console.error('Error submitting form:', error);

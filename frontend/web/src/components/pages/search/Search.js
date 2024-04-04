@@ -8,10 +8,13 @@ import BreadCrumb from "./BreadCrumb";
 class Search extends Component {
   constructor(props) {
     super(props);
+    // Directly check for the presence of a JWT token and initialize state
     const token = Cookies.get('jwt');
+    console.log(`Current JWT token: ${token ? 'Present' : 'Absent'}`);
     this.state = {
+      recommendations: null, // Initialize recommendations state
+      // isAuthenticated is true if a token is present, false otherwise
       isAuthenticated: token,
-      recommendations: null, // Add state to track recommendations
     };
   }
 
@@ -21,19 +24,19 @@ class Search extends Component {
   };
 
   render() {
+    const {recommendations } = this.state;
+
     if (!this.state.isAuthenticated) {
       return <Navigate to="/signin" replace />;
-    }
-
-    if (this.state.recommendations) {
-      // If recommendations are available, render the recommendations results page
-      return <SearchResults data={this.state.recommendations} />;
     }
 
     return (
       <>
         <BreadCrumb />
-        <RecommendationForm onRecommendationsFetch={this.handleRecommendationsFetch} />
+        {recommendations ?
+          <SearchResults data={recommendations} /> :
+          <RecommendationForm onRecommendationsFetch={this.handleRecommendationsFetch} />
+        }
       </>
     );
   }
