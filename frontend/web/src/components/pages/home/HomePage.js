@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Navigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import MainBanner from "./MainBanner";
-import Packages from "./Packages";
 import Destinations from "./Destinations";
 
 class HomePage extends Component {
@@ -60,7 +59,6 @@ class HomePage extends Component {
 
            {/*---------Start Imported All Sections-----------*/}
             <MainBanner/>
-            <Packages/>
             <Destinations/>
            {/*---------End Imported All Sections-----------*/}
        </div>
