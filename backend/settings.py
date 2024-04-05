@@ -140,3 +140,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'localens2024@gmail.com'  # your email
 EMAIL_HOST_PASSWORD = 'peplbritdtcrfdra'  # your email password
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Add the origin of your front-end app here
+]

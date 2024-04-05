@@ -110,7 +110,7 @@ class Destinations extends Component {
         return (
             <div className="package-card" key={restaurant.id}>
                 <div className="package-thumb">
-                    <Link to={`${process.env.PUBLIC_URL}/package-details`}>
+                    <Link to={`${process.env.PUBLIC_URL}/location-details/${restaurant.id}`}>
                         <img src={`/Images/${restaurant.id}.jpg`} alt={restaurant.name} className="img-fluid" />
                     </Link>
                 </div>
@@ -119,7 +119,7 @@ class Destinations extends Component {
                         <h5><span>${restaurant.average_cost}</span> Average Cost</h5>
                     </div>
                         <h3><i className="flaticon-arrival" />
-                            <Link to={`${process.env.PUBLIC_URL}/package-details`}>{restaurant.name}</Link>
+                            <Link to={`${process.env.PUBLIC_URL}/location-details/${restaurant.id}`}>{restaurant.name}</Link>
                         </h3>
                     <div className="package-rating">
                         <i className="bx bxs-star" />
@@ -140,7 +140,7 @@ class Destinations extends Component {
         return (
             <div className="package-card" key={hotel.id}>
                 <div className="package-thumb">
-                    <Link to={`${process.env.PUBLIC_URL}/package-details`}>
+                    <Link to={`${process.env.PUBLIC_URL}/location-details/${hotel.id}`}>
                         <img src={`/Images/${hotel.id}.jpg`} alt={hotel.name} className="img-fluid" />
                     </Link>
                 </div>
@@ -149,7 +149,7 @@ class Destinations extends Component {
                         <h5><span>${hotel.average_cost}</span> Average Cost</h5>
                     </div>
                         <h3><i className="flaticon-arrival" />
-                            <Link to={`${process.env.PUBLIC_URL}/package-details`}>{hotel.name}</Link>
+                            <Link to={`${process.env.PUBLIC_URL}/location-details/${hotel.id}`}>{hotel.name}</Link>
                         </h3>
                     <div className="package-rating">
                         <i className="bx bxs-star" />
@@ -170,7 +170,7 @@ class Destinations extends Component {
         return (
             <div className="package-card" key={activity.id}>
                 <div className="package-thumb">
-                    <Link to={`${process.env.PUBLIC_URL}/package-details`}>
+                    <Link to={`${process.env.PUBLIC_URL}/location-details/${activity.id}`}>
                         <img src={`/Images/${activity.id}.jpg`} alt={activity.name} className="img-fluid" />
                     </Link>
                 </div>
@@ -179,7 +179,7 @@ class Destinations extends Component {
                         <h5><span>${activity.average_cost}</span> Average Cost</h5>
                     </div>
                         <h3><i className="flaticon-arrival" />
-                            <Link to={`${process.env.PUBLIC_URL}/package-details`}>{activity.name}</Link>
+                            <Link to={`${process.env.PUBLIC_URL}/location-details/${activity.id}`}>{activity.name}</Link>
                         </h3>
                     <div className="package-rating">
                         <i className="bx bxs-star" />

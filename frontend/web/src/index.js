@@ -9,17 +9,14 @@ import Layout from './components/app';
 
 import AboutUs from './components/pages/about-us/AboutUs';
 import Destinations from './components/pages/destinations/Destinations';
-import Packages from './components/pages/package/Packages';
 import Contact from './components/pages/contact/Contact';
 import FAQ from './components/pages/faq/Faq';
 import ErrorPage from './components/pages/404/404';
-import PackageSidebar from './components/pages/package/PackageSidebar';
-import PackageStandard from './components/pages/package/PackageStanderd';
-import PackageDetails from './components/pages/package/PackageDetails';
 import SignIn from './components/pages/signin/SignIn';
 import Register from './components/pages/register/Register';
 import Search from './components/pages/search/Search';
 import SearchResults from './components/pages/search/SearchResults';
+import LocationDetails from './components/pages/location-details/LocationDetail';
 
 import './index.css';
 import './index.scss';
@@ -39,14 +36,11 @@ class Root extends React.Component {
                         <Route path="/" element={<Layout />}>
                             <Route path="about-us" element={<AboutUs />} />
                             <Route path="destination" element={<Destinations />} />
-                            <Route path="package" element={<Packages />} />
-                            <Route path="package-sidebar" element={<PackageSidebar />} />
-                            <Route path="package-standard" element={<PackageStandard />} />
-                            <Route path="package-details" element={<PackageDetails />} />
                             <Route path="faq" element={<FAQ />} />
                             <Route path="contact" element={<Contact />} />
                             <Route path="search" element={<Search />} />
                             <Route path="search-results" element={<SearchResults />} />
+                            <Route path="location-details/:id" element={<LocationDetails />} />
                             {/* Send all pages that do not exist to error page */}
                             <Route path="*" element={<ErrorPage />} />
                         </Route>

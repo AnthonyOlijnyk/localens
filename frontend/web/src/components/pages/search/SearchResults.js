@@ -43,7 +43,7 @@ const SearchResults = () => {
         return (
             <div className="package-card" key={result.id}>
                 <div className="package-thumb">
-                    <Link to={`${process.env.PUBLIC_URL}/package-details`}>
+                    <Link to={`${process.env.PUBLIC_URL}/location-details/${result.id}`}>
                         <img src={`/Images/${result.id}.jpg`} alt={result.name} className="img-fluid" />
                     </Link>
                 </div>
@@ -52,7 +52,7 @@ const SearchResults = () => {
                         <h5><span>${result.average_cost}</span> Average Cost</h5>
                     </div>
                     <h3><i className="flaticon-arrival" />
-                        <Link to={`${process.env.PUBLIC_URL}/package-details`}>{result.name}</Link>
+                        <Link to={`${process.env.PUBLIC_URL}/location-details/${result.id}`}>{result.name}</Link>
                     </h3>
                     <div className="package-rating">
                         <i className="bx bxs-star" />

@@ -19,11 +19,15 @@ from django.urls import path
 
 from user.views import SignUpView, LoginView
 from recommendation.views import MakeRecommendationView, GetRecommendationsFromPastData
+from location.views import LocationDetailView
+from review.views import ReviewsByLocationView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/signup', SignUpView.as_view(), name='signup'),
     path('api/login', LoginView.as_view(), name='login'),
     path('api/make-recommendation', MakeRecommendationView.as_view(), name='make-recommendation'),
-    path('api/get-recommendations-from-past-data', GetRecommendationsFromPastData.as_view(), name='get-recommendation-from-past-data')
+    path('api/get-recommendations-from-past-data', GetRecommendationsFromPastData.as_view(), name='get-recommendation-from-past-data'),
+    path('api/location-details/<int:pk>/', LocationDetailView.as_view(), name='location-detail'),  # New line for LocationDetailView
+    path('api/review/<int:location_id>/', ReviewsByLocationView.as_view(), name='review-detail'),
 ]
