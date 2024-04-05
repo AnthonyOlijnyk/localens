@@ -85,7 +85,7 @@ const RecommendationsForm = () => {
   };
 
   return (
-    <div className="search-form-container">
+    <div className="search-form-container" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
       <form className="search-form" onSubmit={handleSubmit}>
         <h2 className="search-heading">Find Recommendations</h2>
 
