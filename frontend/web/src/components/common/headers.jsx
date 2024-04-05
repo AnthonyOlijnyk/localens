@@ -93,7 +93,9 @@ class Headers extends Component {
                                     </ul>
                                     <div className="navbar-icons-2">
                                         <div className="searchbar-open">
-                                            <i className="flaticon-magnifier" />
+                                            <Link to={`${process.env.PUBLIC_URL}/search`}>
+                                                <i className="flaticon-magnifier" />
+                                            </Link>
                                         </div>
                                         <div className="user-dropdown-icon">
                                             <i className="flaticon-user" />
@@ -130,19 +132,6 @@ class Headers extends Component {
                             </div>
                         </div>
                     </div>
-
-                    <form>
-                        <div className="main-searchbar">
-                            <div className="searchbar-close">
-                                <i className="bx bx-x" />
-                            </div>
-                            <input type="text" placeholder="Search Here......" />
-                            <div className="searchbar-icon">
-                                <i className="bx bx-search" />
-                            </div>
-                        </div>
-                    </form>
-
                 </div>
             </header>
             {/* ===============  header area end =============== */}

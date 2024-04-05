@@ -3,34 +3,19 @@ import { Link, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import "../../../components/pages/signin/SignIn.css";
 
-import pd_thumb from "../../../assets/images/package/pd-thumb.png"
-import pr_1 from "../../../assets/images/package/pr-1.png"
-
-import gallery1Img from "../../../assets/images/gallary/gl-1.png"
-import gallery2Img from "../../../assets/images/gallary/gl-2.png"
-import gallery4Img from "../../../assets/images/gallary/gl-4.png"
-import gallery5Img from "../../../assets/images/gallary/gl-5.png"
-import gallery6Img from "../../../assets/images/gallary/gl-6.png"
-
-import galleryGxx1Img from "../../../assets/images/gallary/g-xxl-1.png"
-import galleryGxx2Img from "../../../assets/images/gallary/g-xxl-2.png"
-import galleryGxx3Img from "../../../assets/images/gallary/g-xxl-3.png"
-
-import galleryGxl1Img from "../../../assets/images/gallary/g-xl-1.png"
-import galleryGxl2Img from "../../../assets/images/gallary/g-xl-2.png"
-import galleryGxl3Img from "../../../assets/images/gallary/g-xl-3.png"
-
 import pm_sm_1  from "../../../assets/images/package/p-sm-1.png";
 import pm_sm_4  from "../../../assets/images/package/p-sm-4.png";
 import pm_sm_2  from "../../../assets/images/package/p-sm-2.png";
 import pm_sm_3  from "../../../assets/images/package/p-sm-3.png";
 
-import { SRLWrapper } from "simple-react-lightbox";
 import "react-datepicker/dist/react-datepicker.css";
 
 const LocationDetail = () => {
     const [locationDetails, setLocationDetails] = useState(null);
     const [locationReviews, setLocationReviews] = useState([]);
+    const [restaurantRecommendations, setRestaurantRecommendations] = useState([]);
+    const [hotelRecommendations, setHotelRecommendations] = useState([]);
+    const [activityRecommendations, setActivityRecommendations] = useState([]);
     const [generalError, setGeneralError] = useState('');
     const params = useParams();
     const token = Cookies.get('jwt');
@@ -95,6 +80,35 @@ const LocationDetail = () => {
         };
 
         fetchLocationReviews(params.id);
+        
+        const fetchRecommendationsFromPastData = () => {
+            console.log('Fetching recommendations based on past data'); // For debugging
+            fetch('http://localhost:8000/api/get-recommendations-from-past-data', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Recommendations:', data); // For debugging
+                setRestaurantRecommendations(data.Restaurant || []);
+                setHotelRecommendations(data.Hotel || []);
+                setActivityRecommendations(data.Activity || []);
+            })
+            .catch(error => {
+                console.error('Fetching recommendations failed:', error);
+                setGeneralError(error.message);
+            });
+        };
+
+        fetchRecommendationsFromPastData();
 
         const scrollTop = () => {
             window.scrollTo({
@@ -138,6 +152,54 @@ const LocationDetail = () => {
         }
         return <div>No reviews found.</div>;
     };
+
+    const getTitleBasedOnType = (type) => {
+        switch (type) {
+            case 'Restaurant':
+                return 'Popular Restaurants';
+            case 'Hotel':
+                return 'Popular Hotels';
+            case 'Activity':
+                return 'Popular Activities';
+            default:
+                return 'Popular Locations'; // Default case if type is not one of the above
+        }
+    };
+
+    const renderRecommendationsByType = () => {
+        let recommendationsToDisplay = [];
+        switch (locationDetails.type) {
+            case 'Restaurant':
+                recommendationsToDisplay = restaurantRecommendations;
+                break;
+            case 'Hotel':
+                recommendationsToDisplay = hotelRecommendations;
+                break;
+            case 'Activity':
+                recommendationsToDisplay = activityRecommendations;
+                break;
+            default:
+                return <div>No recommendations available.</div>;
+        }
+
+        return recommendationsToDisplay.map(recommendation => (
+            <li key={recommendation.id} className="package-card-sm">
+                <div className="p-sm-img">
+                    <img src={`/Images/${recommendation.id}.jpg`} alt={recommendation.name} />
+                </div>
+                <div className="package-info">
+                    <div className="package-date-sm">
+                        <strong><i className="bx bxs-star" />{recommendation.average_rating}</strong>
+                    </div>
+                    <h3><i className="" />
+                        <Link to={`${process.env.PUBLIC_URL}/location-details/${recommendation.id}`}>{recommendation.name}</Link>
+                    </h3>
+                    <h5><span>${recommendation.average_cost}</span> Average Cost</h5>
+                </div>
+            </li>
+        ));
+    };
+
 
     return (
         <>
@@ -337,78 +399,9 @@ const LocationDetail = () => {
                                     </div>
                                     <div className="col-lg-12 col-md-6">
                                         <div className="p-sidebar-cards mt-40">
-                                            <h5 className="package-d-head">Popular Packages</h5>
+                                            <h5 className="package-d-head">{getTitleBasedOnType(locationDetails.type)}</h5>
                                             <ul className="package-cards">
-                                                <li className="package-card-sm">
-                                                    <div className="p-sm-img">
-                                                        <img src={pm_sm_1} alt="" />
-                                                    </div>
-                                                    <div className="package-info">
-                                                        <div className="package-date-sm">
-                                                            <strong><i className="flaticon-calendar" />5 Days/6 night</strong>
-                                                        </div>
-                                                        <h3><i className="flaticon-arrival" />
-                                                            <Link to={`${process.env.PUBLIC_URL}/package-details`}>Lake Garda</Link>
-                                                        </h3>
-                                                        <h5><span>$180</span>/ Per Person</h5>
-                                                    </div>
-                                                </li>
-                                                <li className="package-card-sm">
-                                                    <div className="p-sm-img">
-                                                        <img src={pm_sm_4} alt="" />
-                                                    </div>
-                                                    <div className="package-info">
-                                                        <div className="package-date-sm">
-                                                            <strong><i className="flaticon-calendar" />5 Days/6 night</strong>
-                                                        </div>
-                                                        <h3><i className="flaticon-arrival" />
-                                                            <Link to={`${process.env.PUBLIC_URL}/package-details`}>Paris Hill Tour</Link>
-                                                        </h3>
-                                                        <h5><span>$180</span>/ Per Person</h5>
-                                                    </div>
-                                                </li>
-                                                <li className="package-card-sm">
-                                                    <div className="p-sm-img">
-                                                        <img src={pm_sm_2} alt="" />
-                                                    </div>
-                                                    <div className="package-info">
-                                                        <div className="package-date-sm">
-                                                            <strong><i className="flaticon-calendar" />5 Days/6 night</strong>
-                                                        </div>
-                                                        <h3><i className="flaticon-arrival" />
-                                                            <Link to={`${process.env.PUBLIC_URL}/package-details`}>Amalfi Costa</Link>
-                                                        </h3>
-                                                        <h5><span>$180</span>/ Per Person</h5>
-                                                    </div>
-                                                </li>
-                                                <li className="package-card-sm">
-                                                    <div className="p-sm-img">
-                                                        <img src={pm_sm_3} alt="" />
-                                                    </div>
-                                                    <div className="package-info">
-                                                        <div className="package-date-sm">
-                                                            <strong><i className="flaticon-calendar" />5 Days/6 night</strong>
-                                                        </div>
-                                                        <h3><i className="flaticon-arrival" />
-                                                            <Link to={`${process.env.PUBLIC_URL}/package-details`}>Mount Dtna</Link>
-                                                        </h3>
-                                                        <h5><span>$180</span>/ Per Person</h5>
-                                                    </div>
-                                                </li>
-                                                <li className="package-card-sm">
-                                                    <div className="p-sm-img">
-                                                        <img src={pm_sm_4} alt="" />
-                                                    </div>
-                                                    <div className="package-info">
-                                                        <div className="package-date-sm">
-                                                            <strong><i className="flaticon-calendar" />5 Days/6 night</strong>
-                                                        </div>
-                                                        <h3><i className="flaticon-arrival" />
-                                                            <Link to={`${process.env.PUBLIC_URL}/package-details`}>Fench Rivirany</Link>
-                                                        </h3>
-                                                        <h5><span>$180</span>/ Per Person</h5>
-                                                    </div>
-                                                </li>
+                                                {renderRecommendationsByType()}
                                             </ul>
                                         </div>
                                     </div>
