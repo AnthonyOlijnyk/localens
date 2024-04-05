@@ -9,3 +9,15 @@ INCORRECT_PASSWORD = {
         'Incorrect password for the specified user.'
     ]
 }
+
+EMAIL_IN_USE = {
+    'email': [
+        'Email already in use.'
+    ]
+}
+
+USERNAME_IN_USE = {
+    'username': [
+        'Username already in use.'
+    ]
+}

@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"testusername\",\r\n    \"email\": \"test.test@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"raw": "{\r\n    \"username\": \"tbcdef\",\r\n    \"email\": \"tb@example.com\",\r\n    \"password\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -36,13 +36,130 @@
 			"response": []
 		},
 		{
+			"name": "api/updateEmail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzEyMzMzODk3LCJpYXQiOjE3MTIzMzAyOTd9.vxQ0HsoBgiVxdpcTeFZJQrUyXOIzHSGdE_L-4b-UJKw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"aaa@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/updateEmail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateEmail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/updateUsername",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzEyMzMzODk3LCJpYXQiOjE3MTIzMzAyOTd9.vxQ0HsoBgiVxdpcTeFZJQrUyXOIzHSGdE_L-4b-UJKw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"aaaaa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/updateUsername",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateUsername"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/updatePassword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZXhwIjoxNzEyMzM0Mzg1LCJpYXQiOjE3MTIzMzA3ODV9.4TL65scuCZLWsnUuzj6kcUKB-4xR375vUlcM8MABSkI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentPassword\": \"password\",\r\n    \"newPassword\": \"abcdefg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/updatePassword",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "api/login",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"test.test@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"raw": "{\r\n    \"email\": \"tb@example.com\",\r\n    \"password\": \"abcdefg\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,7 +189,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzExMjQ5OTM2LCJpYXQiOjE3MTEyNDYzMzZ9.oEIYa63goaC1PWUd6PiQRnjv0FpcI1O4Ye9ygsgLp8A",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzEyMjY0MDY2LCJpYXQiOjE3MTIyNjA0NjZ9.gcEs28Gs_vbOvGoUmBJivaX7T5NUyq_bUHcwLuh9CKk",
 							"type": "string"
 						}
 					]
@@ -81,7 +198,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"type\": \"Restaurant\",\r\n    \"average_rating\": 4.0,\r\n    \"latitude\": 43.65846535,\r\n    \"longitude\": -79.38184198,\r\n    \"family_friendly\": 1,\r\n    \"cost\": 20,\r\n    \"open_time\": 2,\r\n    \"close_time\": 3,\r\n    \"accessibility_rating\": 4,\r\n    \"capacity\": 20\r\n}",
+					"raw": "{\r\n    \"type\": \"Restaurant\",\r\n    \"average_rating\": 3.0,\r\n    \"latitude\": 40.65846535,\r\n    \"longitude\": -75.38184198,\r\n    \"family_friendly\": 0,\r\n    \"cost\": 500,\r\n    \"open_time\": 9,\r\n    \"close_time\": 18,\r\n    \"accessibility_rating\": 4,\r\n    \"capacity\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -114,7 +231,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNzExMjU3MDI4LCJpYXQiOjE3MTEyNTM0Mjh9.7-UhvdYJe18nKET1LVmAyCVPODSoPXUkJCUZmEHJlp8",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZXhwIjoxNzEyMjY0Mjg4LCJpYXQiOjE3MTIyNjA2ODh9.KSfKv8IXT2osx1jVxDvagmygu_6Dakh3-9tSa1UBr38",
 							"type": "string"
 						}
 					]
@@ -140,6 +257,48 @@
 					"path": [
 						"api",
 						"get-recommendations-from-past-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/userDetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZXhwIjoxNzEyMzM1ODczLCJpYXQiOjE3MTIzMzIyNzN9.IAhmZOsCnAAKmbNSUXEfpVHOSGj4nrZuHr5ycdHV9-k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"Restaurant\",\r\n    \"average_rating\": 4.0,\r\n    \"latitude\": 43.65846535,\r\n    \"longitude\": -79.38184198,\r\n    \"family_friendly\": 1,\r\n    \"cost\": 20,\r\n    \"open_time\": 2,\r\n    \"close_time\": 3,\r\n    \"accessibility_rating\": 4,\r\n    \"capacity\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/userDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"userDetails"
 					]
 				}
 			},

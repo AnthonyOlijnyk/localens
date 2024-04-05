@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from user.views import SignUpView, LoginView
+from user.views import SignUpView, LoginView, UpdateEmail, UpdatePassword, UpdateUsername, GetUserDetails
 from recommendation.views import MakeRecommendationView, GetRecommendationsFromPastData
 from location.views import LocationDetailView, LocationListView
 from review.views import ReviewsByLocationView
@@ -30,5 +30,9 @@ urlpatterns = [
     path('api/get-recommendations-from-past-data', GetRecommendationsFromPastData.as_view(), name='get-recommendation-from-past-data'),
     path('api/locations-all', LocationListView.as_view(), name='locations-all'),
     path('api/location-details/<int:pk>/', LocationDetailView.as_view(), name='location-detail'),  # New line for LocationDetailView
-    path('api/review/<int:location_id>/', ReviewsByLocationView.as_view(), name='review-detail')
+    path('api/review/<int:location_id>/', ReviewsByLocationView.as_view(), name='review-detail'),
+    path('api/updateEmail', UpdateEmail.as_view(), name='update-email'),
+    path('api/updateUsername', UpdateUsername.as_view(), name='update-username'),
+    path('api/updatePassword', UpdatePassword.as_view(), name='update-password'),
+    path('api/userDetails', GetUserDetails.as_view(), name='user-details')
 ]

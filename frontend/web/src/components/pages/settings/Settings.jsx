@@ -57,8 +57,8 @@ class Settings extends Component {
 
             const data = await response.json();
             this.setState({
-                currentUserEmail: data.email,
-                currentUsername: data.username,
+                currentUserEmail: data.user.email,
+                currentUsername: data.user.username,
             });
         } catch (error) {
             console.error('Error during the fetch:', error);
@@ -105,19 +105,27 @@ class Settings extends Component {
 
         try {
             const response = await fetch(endpoint, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: headers,
                 body: JSON.stringify(body),
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                let errorMessage = undefined
+                const errorResponse = await response.json()
+
+                if (errorResponse.errors.password) errorMessage = errorResponse.errors.password.shift()
+                else if (errorResponse.errors.email) errorMessage = errorResponse.errors.email.shift()
+                else if (errorResponse.errors.username) errorMessage = errorResponse.errors.username.shift()
+
+                throw new Error(errorMessage)
             }
 
             alert('Update successful!');
+            this.getCurrentUserDetails();
         } catch (error) {
             console.error('Error during the update:', error);
-            alert('An error occurred. Please try again.');
+            alert(error);
         }
     }
 
