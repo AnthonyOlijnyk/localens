@@ -249,7 +249,7 @@ class Footers extends Component {
                                                 <Link to={`${process.env.PUBLIC_URL}/about-us`} onClick={this.scrollTop}>About Us</Link>
                                             </li>
                                             <li>
-                                                <Link to={`${process.env.PUBLIC_URL}/destination`} onClick={this.scrollTop} >My Account</Link>
+                                                <Link to={`${process.env.PUBLIC_URL}/settings`} onClick={this.scrollTop} >My Account</Link>
                                             </li>
                                             <li>
                                                 <Link to={`${process.env.PUBLIC_URL}/homepage`} className="sub-item" onClick={this.scrollTop}>Home</Link>
