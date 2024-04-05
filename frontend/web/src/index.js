@@ -8,7 +8,6 @@ import SecondLayout from './components/layouts/main-two';
 import Layout from './components/app';
 
 import AboutUs from './components/pages/about-us/AboutUs';
-import Destinations from './components/pages/destinations/Destinations';
 import Contact from './components/pages/contact/Contact';
 import FAQ from './components/pages/faq/Faq';
 import ErrorPage from './components/pages/404/404';
@@ -17,6 +16,7 @@ import Register from './components/pages/register/Register';
 import Search from './components/pages/search/Search';
 import SearchResults from './components/pages/search/SearchResults';
 import LocationDetails from './components/pages/location-details/LocationDetail';
+import AllLocations from './components/pages/all-locations/AllLocations'
 
 import './index.css';
 import './index.scss';
@@ -35,12 +35,12 @@ class Root extends React.Component {
                         {/* Nested routes inside Layout component */}
                         <Route path="/" element={<Layout />}>
                             <Route path="about-us" element={<AboutUs />} />
-                            <Route path="destination" element={<Destinations />} />
                             <Route path="faq" element={<FAQ />} />
                             <Route path="contact" element={<Contact />} />
                             <Route path="search" element={<Search />} />
                             <Route path="search-results" element={<SearchResults />} />
                             <Route path="location-details/:id" element={<LocationDetails />} />
+                            <Route path="all-locations" element={<AllLocations />} />
                             {/* Send all pages that do not exist to error page */}
                             <Route path="*" element={<ErrorPage />} />
                         </Route>
