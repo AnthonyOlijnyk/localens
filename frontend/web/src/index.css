@@ -34,7 +34,7 @@ i#packageCalenderIcon{
     background-color: #004AAD!important;
 }
 .rangeslider-horizontal .rangeslider__fill {
-    background-color: #304F47!important;
+    background-color: #7C616C!important;
 }
 .package-sidebar .sidebar-range .slider {
     position: relative;
@@ -48,5 +48,5 @@ i#packageCalenderIcon{
 }
 
 header .header-area .main-nav ul li a.active {
-    color: #004AAD!important;
+    color: #7C616C!important;
 }

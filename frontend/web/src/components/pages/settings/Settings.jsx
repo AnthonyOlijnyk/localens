@@ -160,7 +160,7 @@ class Settings extends Component {
         const buttonStyle = {
             cursor: 'pointer',
             padding: '10px 20px',
-            backgroundColor: '#007bff',
+            backgroundColor: '#5A3553',
             color: 'white',
             border: 'none',
             borderRadius: '5px',

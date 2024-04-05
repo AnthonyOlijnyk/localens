@@ -43,7 +43,7 @@ class Headers extends Component {
                                             <div className="account-dropdown">
                                                 <ul>
                                                     <li className="account-el">
-                                                        <i className="bx bx-extension" />
+                                                        <i className="bx bx-cog" />
                                                         <Link to={`${process.env.PUBLIC_URL}/settings`}>Account Settings</Link>
                                                     </li>
                                                     <li className="account-el">
@@ -98,7 +98,7 @@ class Headers extends Component {
                                             <div className="account-dropdown">
                                                 <ul>
                                                     <li className="account-el">
-                                                        <i className="bx bx-extension" />
+                                                        <i className="bx bx-cog" />
                                                         <Link to={`${process.env.PUBLIC_URL}/settings`} >Account Settings</Link>
                                                     </li>
                                                     <li className="account-el">
@@ -117,6 +117,15 @@ class Headers extends Component {
                                             </li>
                                             <li className="sidebar-single-contact"><i className="bx bxs-envelope" />
                                                 <Link to={`mailto:info@example.com`} >localens2024@gmail.com</Link>
+                                            </li>
+                                            <li className="sidebar-single-contact">
+                                                <i className="bx bx-cog" />
+                                                <Link to={`${process.env.PUBLIC_URL}/settings`} >Account Settings</Link>
+                                            </li>
+                                            <li className="sidebar-single-contact">
+                                                <i className="bx bx-log-in-circle" />
+                                                {/* </li><Link to={`#`} >Log out</Link> */}
+                                                <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.handleSignOut}>Sign Out</NavLink>
                                             </li>
                                         </ul>
                                     </div>

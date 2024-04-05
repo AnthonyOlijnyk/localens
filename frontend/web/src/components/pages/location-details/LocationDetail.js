@@ -386,6 +386,7 @@ const LocationDetail = () => {
                                                             className="continue-button"
                                                             type="button"
                                                             defaultValue="Search" 
+                                                            style={{ color: 'white' }}
                                                         />
                                                     </Link>
                                                 </div>
