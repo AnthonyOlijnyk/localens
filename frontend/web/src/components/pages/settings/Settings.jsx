@@ -10,6 +10,8 @@ class Settings extends Component {
             isAuthenticated: !!token,
             email: '',
             username: '',
+            currentPassword: '',
+            newPassword: '',
             updateChoice: '',
             currentUserEmail: '',
             currentUsername: '',
@@ -66,6 +68,8 @@ class Settings extends Component {
     async handleSubmit(event) {
         event.preventDefault();
 
+        const { updateChoice, email, username, currentPassword, newPassword } = this.state;
+
         const token = Cookies.get('jwt');
         if (!token) {
             this.setState({ isAuthenticated: false });
@@ -81,12 +85,22 @@ class Settings extends Component {
         let body = {};
         const baseUrl = 'http://localhost:8000';
 
-        if (this.state.updateChoice === 'email') {
-            endpoint = `${baseUrl}/api/updateEmail`;
-            body = { email: this.state.email };
-        } else if (this.state.updateChoice === 'username') {
-            endpoint = `${baseUrl}/api/updateUsername`;
-            body = { username: this.state.username };
+        switch(updateChoice) {
+            case 'email':
+                endpoint = `${baseUrl}/api/updateEmail`;
+                body = { email };
+                break;
+            case 'username':
+                endpoint = `${baseUrl}/api/updateUsername`;
+                body = { username };
+                break;
+            case 'password':
+                endpoint = `${baseUrl}/api/updatePassword`;
+                body = { currentPassword, newPassword };
+                break;
+            default:
+                console.log('No valid choice made');
+                return;
         }
 
         try {
@@ -100,7 +114,6 @@ class Settings extends Component {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const data = await response.json();
             alert('Update successful!');
         } catch (error) {
             console.error('Error during the update:', error);
@@ -143,6 +156,28 @@ class Settings extends Component {
                             name="username"
                             placeholder="New Username"
                             value={this.state.username}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </>
+                )}
+                {this.state.updateChoice === 'password' && (
+                    <>
+                        <input
+                            style={inputStyle}
+                            type="password"
+                            name="currentPassword"
+                            placeholder="Current Password"
+                            value={this.state.currentPassword}
+                            onChange={this.handleChange}
+                            required
+                        />
+                        <input
+                            style={inputStyle}
+                            type="password"
+                            name="newPassword"
+                            placeholder="New Password"
+                            value={this.state.newPassword}
                             onChange={this.handleChange}
                             required
                         />
@@ -205,6 +240,7 @@ class Settings extends Component {
                             <h2 style={{ marginBottom: '30px' }}>Update Account Information</h2>
                             <button style={buttonStyle} onClick={() => this.handleChoiceChange('email')}>Update Email</button>
                             <button style={buttonStyle} onClick={() => this.handleChoiceChange('username')}>Update Username</button>
+                            <button style={buttonStyle} onClick={() => this.handleChoiceChange('password')}>Change Password</button>
                             {this.state.updateChoice && (
                                 <form onSubmit={this.handleSubmit}>
                                     {this.renderUpdateForm()}
