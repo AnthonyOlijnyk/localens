@@ -25,7 +25,7 @@ class Locations extends Component {
     componentDidMount() {
         this._isMounted = true;
         const token = Cookies.get('jwt');
-        const apiUrl = `http://localhost:8000/api/locations-all`;
+        const apiUrl = 'http://localhost:8000/api/locations-all';
 
         if (!token) {
             console.error('Authentication token not found');
@@ -40,20 +40,14 @@ class Locations extends Component {
                 'Content-Type': 'application/json',
             },
         })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Network response was not ok');
-            }
-        })
+        .then(response => response.json())
         .then(data => {
             if (this._isMounted) {
-                const restaurants = data.filter(location => location.type === 'Restaurant');
-                const hotels = data.filter(location => location.type === 'Hotel');
-                const activities = data.filter(location => location.type === 'Activity');
-
-                this.setState({ restaurants, hotels, activities });
+                this.setState({ 
+                    restaurants: data.filter(location => location.type === 'Restaurant'),
+                    hotels: data.filter(location => location.type === 'Hotel'),
+                    activities: data.filter(location => location.type === 'Activity')
+                });
             }
         })
         .catch(error => {
@@ -68,11 +62,11 @@ class Locations extends Component {
         this._isMounted = false;
     }
 
-    renderCarouselItems(items) {
+    renderCarouselItems(items, image) {
         return items.map(item => (
             <div className="package-card" key={item.id}>
                 <div className="package-thumb">
-                    <Link to={`${process.env.PUBLIC_URL}/location-details/${item.id}`}>
+                    <Link to={`/location-details/${item.id}`}>
                         <img src={`/Images/${item.id}.jpg`} alt={item.name} className="img-fluid" />
                     </Link>
                 </div>
@@ -81,11 +75,11 @@ class Locations extends Component {
                         <h5><span>${item.average_cost}</span> Average Cost</h5>
                     </div>
                     <h3>
-                        <i className="flaticon-arrival" />
-                        <Link to={`${process.env.PUBLIC_URL}/location-details/${item.id}`}>{item.name}</Link>
+                        <i className="flaticon-arrival"></i>
+                        <Link to={`/location-details/${item.id}`}>{item.name}</Link>
                     </h3>
                     <div className="package-rating">
-                        <i className="bx bxs-star" />
+                        <i className="bx bxs-star"></i>
                         <strong><span>{item.average_rating}</span></strong>
                     </div>
                 </div>
@@ -94,7 +88,7 @@ class Locations extends Component {
     }
 
     render() {
-        const { restaurants, hotels, activities } = this.state;
+        const { restaurants, hotels, activities, generalError } = this.state;
         const destinationsOptions = {
             stagePadding: 1,
             items: 3,
@@ -104,7 +98,9 @@ class Locations extends Component {
             autoplay: false,
             dots: false,
             nav: true,
-            navText: ["<i class='bx bx-chevron-left' ></i>", "<i class='bx bx-chevron-right'></i>"],
+            navContainerClass: 'owl-nav custom-owl-nav', // Custom class for the nav container
+            navText: ["<div class='custom-nav-btn custom-nav-prev'><i class='bx bx-chevron-left'></i></div>",
+                "<div class='custom-nav-btn custom-nav-next'><i class='bx bx-chevron-right'></i></div>"],
             responsive: {
                 0: {
                     items: 1,
@@ -123,62 +119,61 @@ class Locations extends Component {
 
         return (
             <>
-                {/* =============== Top Recommendations Area Start =============== */}
+                {generalError && <div className="error">{generalError}</div>}
                 <div className="destinations-area pt-105">
                     <div className="container">
-                        {/* =============== ALL Restaurants =============== */}
+                        {/* All Restaurants */}
                         <div className="row">
                             <div className="col-lg-3 col-md-3">
                                 <div className="package-slider-wrap">
-                                    <img src={destinations1Img} alt="" className="img-fluid" />
+                                    <img src={destinations1Img} alt="All Restaurants" className="img-fluid" />
                                     <div className="pakage-overlay">
-                                        <strong>Restaurants</strong>
+                                        <strong>All Restaurants</strong>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-9 col-md-9">
-                                <OwlCarousel className="row owl-carousel destinations-1" {...destinationsOptions}>
-                                    {this.renderCarouselItems(this.state.restaurants)}
+                                <OwlCarousel key={restaurants.length} className="owl-carousel destinations-1" {...destinationsOptions}>
+                                    {this.renderCarouselItems(restaurants, destinations1Img)}
                                 </OwlCarousel>
                             </div>
                         </div>
 
-                        {/* =============== ALL Hotels =============== */}
+                        {/* All Hotels */}
                         <div className="row">
                             <div className="col-lg-3 col-md-3">
                                 <div className="package-slider-wrap">
-                                    <img src={destinations2Img} alt="" className="img-fluid" />
+                                    <img src={destinations2Img} alt="All Hotels" className="img-fluid" />
                                     <div className="pakage-overlay">
-                                        <strong>Hotels</strong>
+                                        <strong>All Hotels</strong>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-9 col-md-9">
-                                <OwlCarousel className="row owl-carousel destinations-1" {...destinationsOptions}>
-                                    {this.renderCarouselItems(this.state.hotels)}
+                                <OwlCarousel key={hotels.length} className="owl-carousel destinations-1" {...destinationsOptions}>
+                                    {this.renderCarouselItems(hotels, destinations2Img)}
                                 </OwlCarousel>
                             </div>
                         </div>
 
-                        {/* =============== ALL Activities =============== */}
+                        {/* All Activities */}
                         <div className="row">
                             <div className="col-lg-3 col-md-3">
                                 <div className="package-slider-wrap">
-                                    <img src={destinations3Img} alt="" className="img-fluid" />
+                                    <img src={destinations3Img} alt="All Activities" className="img-fluid" />
                                     <div className="pakage-overlay">
-                                        <strong>Activities</strong>
+                                        <strong>All Activities</strong>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-9 col-md-9">
-                                <OwlCarousel className="row owl-carousel destinations-1" {...destinationsOptions}>
-                                    {this.renderCarouselItems(this.state.activities)}
+                                <OwlCarousel key={activities.length} className="owl-carousel destinations-1" {...destinationsOptions}>
+                                    {this.renderCarouselItems(activities, destinations3Img)}
                                 </OwlCarousel>
                             </div>
                         </div>
                     </div>
                 </div>
-                {/* =============== Top Recommendations Area End =============== */}
             </>
         );
     }
