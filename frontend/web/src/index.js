@@ -13,10 +13,14 @@ import FAQ from './components/pages/faq/Faq';
 import ErrorPage from './components/pages/404/404';
 import SignIn from './components/pages/signin/SignIn';
 import Register from './components/pages/register/Register';
+<<<<<<< Updated upstream
 import Search from './components/pages/search/Search';
 import SearchResults from './components/pages/search/SearchResults';
 import LocationDetails from './components/pages/location-details/LocationDetail';
 import AllLocations from './components/pages/all-locations/AllLocations'
+=======
+import Settings from './components/pages/settings/Settings';
+>>>>>>> Stashed changes
 
 import './index.css';
 import './index.scss';
@@ -36,6 +40,11 @@ class Root extends React.Component {
                         <Route path="/" element={<Layout />}>
                             <Route path="about-us" element={<AboutUs />} />
                             <Route path="faq" element={<FAQ />} />
+<<<<<<< Updated upstream
+=======
+                            <Route path="404" element={<ErrorPage />} />
+                            <Route path="settings" element={<Settings />} />
+>>>>>>> Stashed changes
                             <Route path="contact" element={<Contact />} />
                             <Route path="search" element={<Search />} />
                             <Route path="search-results" element={<SearchResults />} />
