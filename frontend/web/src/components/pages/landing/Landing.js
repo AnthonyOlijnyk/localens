@@ -9,13 +9,13 @@ function Landing() {
     const handleLogin = (e) => {
         e.preventDefault();
         // Redirect to home page
-        navigate('/SignIn'); // Adjust the route as needed
+        navigate('/signin'); // Adjust the route as needed
     };
 
     const handleRegister = (e) => {
         e.preventDefault();
         // Redirect to home page
-        navigate('/Register'); // Adjust the route as needed
+        navigate('/register'); // Adjust the route as needed
     };
 
     return (
