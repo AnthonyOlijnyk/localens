@@ -116,7 +116,7 @@ class Headers extends Component {
                                                 <Link to={`tel:(123) 456 7890)`} >(123) 456 7890</Link>
                                             </li>
                                             <li className="sidebar-single-contact"><i className="bx bxs-envelope" />
-                                                <Link to={`mailto:info@example.com`} >localens@gmail.com</Link>
+                                                <Link to={`mailto:info@example.com`} >localens2024@gmail.com</Link>
                                             </li>
                                         </ul>
                                     </div>

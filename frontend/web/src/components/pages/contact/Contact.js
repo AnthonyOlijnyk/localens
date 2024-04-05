@@ -73,7 +73,7 @@ class AboutUs extends Component {
                                     <div className="contact-info">
                                         <h5>Email &amp; Phone</h5>
                                         <p>(123) 456 7890
-                                            localens@gmail.com</p>
+                                            localens2024@gmail.com</p>
                                     </div>
                                 </div>
                             </div>
