@@ -3,11 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import "../../../components/pages/signin/SignIn.css";
 
-import pm_sm_1  from "../../../assets/images/package/p-sm-1.png";
-import pm_sm_4  from "../../../assets/images/package/p-sm-4.png";
-import pm_sm_2  from "../../../assets/images/package/p-sm-2.png";
-import pm_sm_3  from "../../../assets/images/package/p-sm-3.png";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 const LocationDetail = () => {

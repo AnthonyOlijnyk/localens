@@ -2305,22 +2305,9 @@ header > .header-area .nav-right {
 /* =============================
    10. Feature area start
 ==============================*/
-.feature-area {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, rgba(48, 79, 71, 0.3)), to(rgba(48, 79, 71, 0.4))), url(../images/feature/feature-bg-1.png) center no-repeat;
-  background: linear-gradient(rgba(48, 79, 71, 0.3) 100%, rgba(48, 79, 71, 0.4) 100%), url(../images/feature/feature-bg-1.png) center no-repeat;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 
 .feature-area .section-head h2 {
   color: #fff;
-}
-
-.feature-area-2 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, rgba(48, 79, 71, 0.3)), to(rgba(48, 79, 71, 0.3))), url(../images/feature/feature-bg.png) center no-repeat;
-  background: linear-gradient(rgba(48, 79, 71, 0.3) 100%, rgba(48, 79, 71, 0.3) 100%), url(../images/feature/feature-bg.png) center no-repeat;
-  background-size: cover;
 }
 
 .feature-area-2 .feature-head-2 {
