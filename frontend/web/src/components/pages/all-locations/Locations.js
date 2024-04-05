@@ -43,7 +43,7 @@ class Locations extends Component {
         .then(response => response.json())
         .then(data => {
             if (this._isMounted) {
-                this.setState({ 
+                this.setState({
                     restaurants: data.filter(location => location.type === 'Restaurant'),
                     hotels: data.filter(location => location.type === 'Hotel'),
                     activities: data.filter(location => location.type === 'Activity')
@@ -98,9 +98,11 @@ class Locations extends Component {
             autoplay: false,
             dots: false,
             nav: true,
-            navContainerClass: 'owl-nav custom-owl-nav', // Custom class for the nav container
-            navText: ["<div class='custom-nav-btn custom-nav-prev'><i class='bx bx-chevron-left'></i></div>",
-                "<div class='custom-nav-btn custom-nav-next'><i class='bx bx-chevron-right'></i></div>"],
+            navContainerClass: 'owl-nav custom-owl-nav',
+            navText: [
+                "<div class='custom-nav-btn custom-nav-prev'><i class='bx bx-chevron-left'></i></div>",
+                "<div class='custom-nav-btn custom-nav-next'><i class='bx bx-chevron-right'></i></div>"
+            ],
             responsive: {
                 0: {
                     items: 1,
@@ -122,56 +124,35 @@ class Locations extends Component {
                 {generalError && <div className="error">{generalError}</div>}
                 <div className="destinations-area pt-105">
                     <div className="container">
-                        {/* All Restaurants */}
-                        <div className="row">
-                            <div className="col-lg-3 col-md-3">
-                                <div className="package-slider-wrap">
-                                    <img src={destinations1Img} alt="All Restaurants" className="img-fluid" />
-                                    <div className="pakage-overlay">
-                                        <strong>All Restaurants</strong>
+                        {/* Adjustments here ensure overlays are centered */}
+                        {['restaurants', 'hotels', 'activities'].map((category, index) => {
+                            const images = [destinations1Img, destinations2Img, destinations3Img];
+                            return (
+                                <div className="row" key={category}>
+                                    <div className="col-lg-3 col-md-3">
+                                        <div className="package-slider-wrap">
+                                            <img src={images[index]} alt={`All ${category}`} className="img-fluid" />
+                                            <div className="pakage-overlay" style={{
+                                                position: 'absolute',
+                                                top: '50%',
+                                                left: '50%',
+                                                transform: 'translate(-50%, -50%)',
+                                                color: 'white',
+                                                textAlign: 'center',
+                                                fontSize: '20px', // Adjust size as needed
+                                            }}>
+                                                <strong>All {category.charAt(0).toUpperCase() + category.slice(1)}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-9 col-md-9">
+                                        <OwlCarousel key={this.state[category].length} className="owl-carousel destinations-1" {...destinationsOptions}>
+                                            {this.renderCarouselItems(this.state[category])}
+                                        </OwlCarousel>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-lg-9 col-md-9">
-                                <OwlCarousel key={restaurants.length} className="owl-carousel destinations-1" {...destinationsOptions}>
-                                    {this.renderCarouselItems(restaurants, destinations1Img)}
-                                </OwlCarousel>
-                            </div>
-                        </div>
-
-                        {/* All Hotels */}
-                        <div className="row">
-                            <div className="col-lg-3 col-md-3">
-                                <div className="package-slider-wrap">
-                                    <img src={destinations2Img} alt="All Hotels" className="img-fluid" />
-                                    <div className="pakage-overlay">
-                                        <strong>All Hotels</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-9 col-md-9">
-                                <OwlCarousel key={hotels.length} className="owl-carousel destinations-1" {...destinationsOptions}>
-                                    {this.renderCarouselItems(hotels, destinations2Img)}
-                                </OwlCarousel>
-                            </div>
-                        </div>
-
-                        {/* All Activities */}
-                        <div className="row">
-                            <div className="col-lg-3 col-md-3">
-                                <div className="package-slider-wrap">
-                                    <img src={destinations3Img} alt="All Activities" className="img-fluid" />
-                                    <div className="pakage-overlay">
-                                        <strong>All Activities</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-9 col-md-9">
-                                <OwlCarousel key={activities.length} className="owl-carousel destinations-1" {...destinationsOptions}>
-                                    {this.renderCarouselItems(activities, destinations3Img)}
-                                </OwlCarousel>
-                            </div>
-                        </div>
+                            );
+                        })}
                     </div>
                 </div>
             </>
@@ -180,3 +161,4 @@ class Locations extends Component {
 }
 
 export default Locations;
+
