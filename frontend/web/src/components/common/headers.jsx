@@ -43,12 +43,8 @@ class Headers extends Component {
                                             <div className="account-dropdown">
                                                 <ul>
                                                     <li className="account-el">
-                                                        <i className="bx bxs-user-account" />
-                                                        <Link to={"#"}>My Interests</Link>
-                                                    </li>
-                                                    <li className="account-el">
                                                         <i className="bx bx-extension" />
-                                                        <Link to={"#"}>Account Settings</Link>
+                                                        <Link to={`${process.env.PUBLIC_URL}/settings`}>Account Settings</Link>
                                                     </li>
                                                     <li className="account-el">
                                                         <i className="bx bx-log-in-circle" />
@@ -102,12 +98,8 @@ class Headers extends Component {
                                             <div className="account-dropdown">
                                                 <ul>
                                                     <li className="account-el">
-                                                        <i className="bx bxs-user-account" />
-                                                        <Link to={`#`} >My Interests</Link>
-                                                    </li>
-                                                    <li className="account-el">
                                                         <i className="bx bx-extension" />
-                                                        <Link to={`#`} >Account Settings</Link>
+                                                        <Link to={`${process.env.PUBLIC_URL}/settings`} >Account Settings</Link>
                                                     </li>
                                                     <li className="account-el">
                                                         <i className="bx bx-log-in-circle" />
