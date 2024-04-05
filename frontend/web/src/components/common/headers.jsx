@@ -15,7 +15,7 @@ class Headers extends Component {
         });
     }
 
-    handleSingOut = () => {
+    handleSignOut = () => {
         //remove JWT Token 
         Cookies.remove('jwt');
         console.log('jwt token expired')
@@ -52,7 +52,7 @@ class Headers extends Component {
                                                     </li>
                                                     <li className="account-el">
                                                         <i className="bx bx-log-in-circle" />
-                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.handleSingOut}>Sign Out</NavLink>
+                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.handleSignOut}>Sign Out</NavLink>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -110,7 +110,7 @@ class Headers extends Component {
                                                     <li className="account-el">
                                                         <i className="bx bx-log-in-circle" />
                                                         {/* </li><Link to={`#`} >Log out</Link> */}
-                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.handleSingOut}>Sign Out</NavLink>
+                                                        <NavLink activeClassName="active" to={`${process.env.PUBLIC_URL}/`} className="sub-item" onClick={this.handleSignOut}>Sign Out</NavLink>
                                                     </li>
                                                 </ul>
                                             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
+import "../../../components/pages/signin/SignIn.css";
 
 import pd_thumb from "../../../assets/images/package/pd-thumb.png"
 import pr_1 from "../../../assets/images/package/pr-1.png"
@@ -29,7 +30,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const LocationDetail = () => {
     const [locationDetails, setLocationDetails] = useState(null);
-    const [locationReviews, setLocationReviews] = useState(null);
+    const [locationReviews, setLocationReviews] = useState([]);
     const [generalError, setGeneralError] = useState('');
     const params = useParams();
     const token = Cookies.get('jwt');
@@ -122,6 +123,21 @@ const LocationDetail = () => {
         return stars;
     };
 
+    const renderReviews = () => {
+        if (locationReviews && locationReviews.length > 0) {
+            return locationReviews.map((review, index) => (
+                <React.Fragment key={review.id}>
+                    <li className="p-review-card">
+                        <div className="p-review-texts">
+                            <p>{review.text}</p>
+                        </div>
+                    </li>
+                    {index < locationReviews.length - 1 && <hr />} {/* Add a horizontal line except after the last item */}
+                </React.Fragment>
+            ));
+        }
+        return <div>No reviews found.</div>;
+    };
 
     return (
         <>
@@ -131,13 +147,13 @@ const LocationDetail = () => {
                     <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12">
                             <div className="breadcrumb-wrap">
-                                <h2>Location Details</h2>
+                                <h2>Details</h2>
                                 <ul className="breadcrumb-links">
                                     <li>
                                         <Link to={`${process.env.PUBLIC_URL}/homepage`}>Home</Link>
                                         <i className="bx bx-chevron-right" />
                                     </li>
-                                    <li>Package Details</li>
+                                    <li>{locationDetails.name}</li>
                                 </ul>
                             </div>
                         </div>
@@ -289,191 +305,11 @@ const LocationDetail = () => {
                                                         <div className="p-rationg">
                                                             <h5>Reviews</h5>
                                                             <ul>
-                                                                <li className="p-review-card">
-                                                                    <div className="p-review-texts">
-                                                                        <p>Morbi dictum pulvinar velit, id mollis lorem faucibus acUt sed
-                                                                            lacinia ipsum. Suspendisse massa augue lorem faucibus acUt
-                                                                            sed lacinia ipsum. Suspendisse </p>
-                                                                    </div>
-                                                                </li>
+                                                                {renderReviews()}
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                            <div className="tab-content-2">
-                                                <div className="row">
-                                                    <div className="col-lg-12">
-                                                        <div className="p-timeline-overview">
-                                                            <h5>Overview</h5>
-                                                            <p>Pellentesque accumsan magna in augue sagittis, non fringilla eros molestie. Sed feugiat mi nec ex vehicula, nec vestibulum orci semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique commodo fringilla. Duis aliquet varius mauris eget rutrum. Nullam sit amet justo consequat, bibendum orci in, convallis enim. Proin convallis neque viverra finibus cursus. Mauris lacinia lacinia erat in finibus.</p>
-                                                        </div>
-                                                        <ul className="p-timeline">
-                                                            <li>
-                                                                <div className="timeline-index">
-                                                                    <div className="index-circle">
-                                                                        <h5>01</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="timeline-content">
-                                                                    <h5>DAY 1 : Departure And Small Tour</h5>
-                                                                    <strong>10.00 AM to 10.00 PM</strong>
-                                                                    <p>Pellentesque accumsan magna in augue sagittis, non fringilla eros molestie. Sed feugiat mi nec ex vehicula, nec vestibulum orci semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique commodo fringilla.</p>
-                                                                    <ul>
-                                                                        <li /><li><i className="bx bx-check" />Specilaized Bilingual Guide</li>
-                                                                        <li /><li><i className="bx bx-check" />Private Transport</li>
-                                                                        <li /><li><i className="bx bx-check" />Entrance Fees</li>
-                                                                        <li /><li><i className="bx bx-check" />Box Lunch,Water,Dinner and Snacks</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div className="timeline-index">
-                                                                    <div className="index-circle">
-                                                                        <h5>02</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="timeline-content">
-                                                                    <h5>DAY 2 : Departure And Small Tour</h5>
-                                                                    <strong>10.00 AM to 10.00 PM</strong>
-                                                                    <p>Pellentesque accumsan magna in augue sagittis, non fringilla eros molestie. Sed feugiat mi nec ex vehicula, nec vestibulum orci semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique commodo fringilla.</p>
-                                                                    <ul>
-                                                                        <li /><li><i className="bx bx-check" />Specilaized Bilingual Guide</li>
-                                                                        <li /><li><i className="bx bx-check" />Private Transport</li>
-                                                                        <li /><li><i className="bx bx-check" />Entrance Fees</li>
-                                                                        <li /><li><i className="bx bx-check" />Box Lunch,Water,Dinner and Snacks</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div className="timeline-index">
-                                                                    <div className="index-circle">
-                                                                        <h5>03</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="timeline-content">
-                                                                    <h5>DAY 3 : Departure And Small Tour</h5>
-                                                                    <strong>10.00 AM to 10.00 PM</strong>
-                                                                    <p>Pellentesque accumsan magna in augue sagittis, non fringilla eros molestie. Sed feugiat mi nec ex vehicula, nec vestibulum orci semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique commodo fringilla.</p>
-                                                                    <ul>
-                                                                        <li /><li><i className="bx bx-check" />Specilaized Bilingual Guide</li>
-                                                                        <li /><li><i className="bx bx-check" />Private Transport</li>
-                                                                        <li /><li><i className="bx bx-check" />Entrance Fees</li>
-                                                                        <li /><li><i className="bx bx-check" />Box Lunch,Water,Dinner and Snacks</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div className="timeline-index">
-                                                                    <div className="index-circle">
-                                                                        <h5>04</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="timeline-content">
-                                                                    <h5>DAY 4 : Departure And Small Tour</h5>
-                                                                    <strong>10.00 AM to 10.00 PM</strong>
-                                                                    <p>Pellentesque accumsan magna in augue sagittis, non fringilla eros molestie. Sed feugiat mi nec ex vehicula, nec vestibulum orci semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique commodo fringilla.</p>
-                                                                    <ul>
-                                                                        <li /><li><i className="bx bx-check" />Specilaized Bilingual Guide</li>
-                                                                        <li /><li><i className="bx bx-check" />Private Transport</li>
-                                                                        <li /><li><i className="bx bx-check" />Entrance Fees</li>
-                                                                        <li /><li><i className="bx bx-check" />Box Lunch,Water,Dinner and Snacks</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div className="timeline-index">
-                                                                    <div className="index-circle">
-                                                                        <h5>05</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="timeline-content">
-                                                                    <h5>DAY 5 : Departure And Small Tour</h5>
-                                                                    <strong>10.00 AM to 10.00 PM</strong>
-                                                                    <p>Pellentesque accumsan magna in augue sagittis, non fringilla eros molestie. Sed feugiat mi nec ex vehicula, nec vestibulum orci semper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tristique commodo fringilla.</p>
-                                                                    <ul>
-                                                                        <li /><li><i className="bx bx-check" />Specilaized Bilingual Guide</li>
-                                                                        <li /><li><i className="bx bx-check" />Private Transport</li>
-                                                                        <li /><li><i className="bx bx-check" />Entrance Fees</li>
-                                                                        <li /><li><i className="bx bx-check" />Box Lunch,Water,Dinner and Snacks</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                            <div className="tab-contant-3">
-                                                <SRLWrapper>
-                                                <div className="row">
-                                                    <div className="col-lg-8 col-md-8">
-                                                        <div className="package-grid-one">
-                                                            <div className="single-grid">
-                                                                <Link to={gallery1Img} className="g-img-sm-1 main-gallary">
-                                                                    <img src={gallery1Img} alt="gallary-img" />
-                                                                </Link>
-
-                                                                <Link to={gallery2Img} className="g-img-sm-2 main-gallary">
-                                                                    <img src={gallery2Img} alt="gallary-img" />
-                                                                </Link>
-
-                                                                <Link to={galleryGxx1Img} className="g-img-md main-gallary">
-                                                                    <img src={galleryGxx1Img} alt="gallary-img" />
-                                                                </Link>
-                                                            </div>
-                                                            <div className="single-grid mt-24">
-                                                                <Link to={gallery2Img} className="g-img-sm-1 main-gallary">
-                                                                    <img src={gallery2Img} alt="gallary-img" />
-                                                                </Link>
-                                                                <Link to={gallery4Img} className="g-img-sm-2 main-gallary">
-                                                                    <img src={gallery4Img} alt="gallary-img" />
-                                                                </Link>
-                                                                <Link to={galleryGxx2Img} className="g-img-md main-gallary">
-                                                                    <img src={galleryGxx2Img} alt="gallary-img" />
-                                                                </Link>
-                                                            </div>
-
-                                                            <div className="single-grid mt-24">
-
-                                                                <Link to={gallery5Img} className="g-img-sm-1 main-gallary">
-                                                                    <img src={gallery5Img} alt="gallary-img" />
-                                                                </Link>
-                                                                <Link to={gallery6Img} className="g-img-sm-2 main-gallary">
-                                                                    <img src={gallery6Img} alt="gallary-img" />
-                                                                </Link>
-                                                                <Link to={galleryGxx3Img} className="g-img-md main-gallary">
-                                                                    <img src={galleryGxx3Img} alt="gallary-img" />
-                                                                </Link>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-4 col-md-4">
-                                                        <div className="package-grid-two">
-                                                            <div className="single-grid-2">
-                                                                <Link to={galleryGxl1Img}  className="main-gallary">
-                                                                    <img src={galleryGxl1Img} alt="gallary-img" />
-                                                                </Link>
-                                                            </div>
-                                                            <div className="single-grid-2 mt-24">
-                                                                <Link to={galleryGxl2Img}  className="single-grid-2 main-gallary mt-30">
-                                                                    <img src={galleryGxl2Img} alt="gallary-img" />
-                                                                </Link>
-                                                            </div>
-                                                            <div className="single-grid-2 mt-24">
-                                                                <Link to={galleryGxl3Img}  className="main-gallary mt-30">
-                                                                    <img src={galleryGxl3Img} alt="gallary-img" />
-                                                                </Link>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </SRLWrapper>
                                             </div>
                                         </div>
                                     </div>
@@ -485,14 +321,18 @@ const LocationDetail = () => {
                                 <div className="row">
                                     <div className="col-lg-12 col-md-6">
                                         <div className="p-sidebar-form">
-                                            <form>
-                                                <h5 className="package-d-head">More Recommendations</h5>
-                                                <div className="row">
-                                                    <div className="col-lg-12">
-                                                        <input type="submit" defaultValue="Search" />
-                                                    </div>
+                                            <h5 className="package-d-head">More Recommendations</h5>
+                                            <div className="row">
+                                                <div className="col-lg-12">
+                                                    <Link to={`${process.env.PUBLIC_URL}/search`}>
+                                                        <input 
+                                                            className="continue-button"
+                                                            type="button"
+                                                            defaultValue="Search" 
+                                                        />
+                                                    </Link>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="col-lg-12 col-md-6">
