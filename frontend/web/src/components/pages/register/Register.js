@@ -64,7 +64,7 @@ function Register() {
         };
 
         try {
-            const response = await fetch("http://localens.onrender.com/api/signup", {
+            const response = await fetch("https://localens.onrender.com/api/signup", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

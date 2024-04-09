@@ -24,7 +24,7 @@ const LocationDetail = () => {
 
         const fetchLocationDetails = (locationId) => {
             console.log(`Fetching details for location ID: ${locationId}`); // For debugging
-            fetch(`http://localens.onrender.com/api/location-details/${locationId}/`, {
+            fetch(`https://localens.onrender.com/api/location-details/${locationId}/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -51,7 +51,7 @@ const LocationDetail = () => {
 
         const fetchLocationReviews = (locationId) => {
             console.log(`Fetching reviews for location ID: ${locationId}`); // For debugging
-            fetch(`http://localens.onrender.com/api/review/${locationId}/`, {
+            fetch(`https://localens.onrender.com/api/review/${locationId}/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -78,7 +78,7 @@ const LocationDetail = () => {
         
         const fetchRecommendationsFromPastData = () => {
             console.log('Fetching recommendations based on past data'); // For debugging
-            fetch('http://localens.onrender.com/api/get-recommendations-from-past-data', {
+            fetch('https://localens.onrender.com/api/get-recommendations-from-past-data', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,

@@ -26,7 +26,7 @@ const SignIn = () => {
     console.log('Attempting to log in with:', jsonData);
 
     try {
-      const response = await fetch("http://localens.onrender.com/api/login", {
+      const response = await fetch("https://localens.onrender.com/api/login", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

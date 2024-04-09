@@ -42,7 +42,7 @@ class Settings extends Component {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         };
-        const baseUrl = 'http://localens.onrender.com:8000';
+        const baseUrl = 'https://localens.onrender.com';
         const endpoint = `${baseUrl}/api/userDetails`;
 
         try {
@@ -83,7 +83,7 @@ class Settings extends Component {
 
         let endpoint = '';
         let body = {};
-        const baseUrl = 'http://localens.onrender.com';
+        const baseUrl = 'https://localens.onrender.com';
 
         switch(updateChoice) {
             case 'email':
