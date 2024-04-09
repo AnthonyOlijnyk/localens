@@ -25,7 +25,7 @@ class Locations extends Component {
     componentDidMount() {
         this._isMounted = true;
         const token = Cookies.get('jwt');
-        const apiUrl = 'http://localhost:8000/api/locations-all';
+        const apiUrl = 'http://localens.onrender.com/api/locations-all';
 
         if (!token) {
             console.error('Authentication token not found');

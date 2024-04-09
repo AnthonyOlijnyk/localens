@@ -25,7 +25,7 @@ class Destinations extends Component {
   componentDidMount() {
     this._isMounted = true;
     const token = Cookies.get('jwt');
-    const apiUrl = `http://localhost:8000/api/get-recommendations-from-past-data`; // Replace with your API's URL
+    const apiUrl = `http://localens.onrender.com/api/get-recommendations-from-past-data`; // Replace with your API's URL
 
     if (!token) {
         console.error('Authentication token not found');
