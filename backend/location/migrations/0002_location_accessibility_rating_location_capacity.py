@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('location', '0002_remove_location_reviews'),
+        ('location', '0001_initial'),
     ]
 
     operations = [

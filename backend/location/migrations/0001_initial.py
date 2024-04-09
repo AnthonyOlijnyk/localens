@@ -28,7 +28,6 @@ class Migration(migrations.Migration):
                 ('average_cost', models.DecimalField(decimal_places=2, max_digits=12)),
                 ('start_time', models.TimeField(default=django.utils.timezone.now)),
                 ('end_time', models.TimeField(default=django.utils.timezone.now)),
-                ('reviews', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='review.review')),
             ],
         ),
     ]
