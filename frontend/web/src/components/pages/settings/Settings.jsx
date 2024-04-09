@@ -42,7 +42,7 @@ class Settings extends Component {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         };
-        const baseUrl = 'https://localens.onrender.com';
+        const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'https://localens.onrender.com';
         const endpoint = `${baseUrl}/api/userDetails`;
 
         try {
@@ -83,7 +83,7 @@ class Settings extends Component {
 
         let endpoint = '';
         let body = {};
-        const baseUrl = 'https://localens.onrender.com';
+        const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'https://localens.onrender.com';
 
         switch(updateChoice) {
             case 'email':

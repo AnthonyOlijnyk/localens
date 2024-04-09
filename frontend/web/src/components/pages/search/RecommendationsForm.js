@@ -46,7 +46,7 @@ const RecommendationsForm = () => {
     };
 
     try {
-        const response = await fetch('https://localens.onrender.com/api/make-recommendation', {
+        const response = await fetch(process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/make-recommendation' : 'https://localens.onrender.com/api/make-recommendation', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

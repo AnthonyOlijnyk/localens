@@ -64,7 +64,7 @@ function Register() {
         };
 
         try {
-            const response = await fetch("https://localens.onrender.com/api/signup", {
+            const response = await fetch(process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/signup' : "https://localens.onrender.com/api/signup", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
