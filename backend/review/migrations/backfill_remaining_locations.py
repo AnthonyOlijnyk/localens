@@ -72,10 +72,6 @@ def backfill_initial_locations(apps, schema_editor):
 
     locations_to_add, reviews_to_add = collect_locations_and_reviews(Location, Review)
 
-    with transaction.atomic():
-        Location.objects.using(db_alias).bulk_create(locations_to_add)
-        Review.objects.using(db_alias).bulk_create(reviews_to_add)
-
     
 
 class Migration(migrations.Migration):
