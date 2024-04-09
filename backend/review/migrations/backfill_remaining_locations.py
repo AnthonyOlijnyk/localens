@@ -16,12 +16,14 @@ def form_reviews(row, new_location, Review):
     review_texts = re.findall(r'(-[^\n]+)', row['Customer reviews'])
     
     for review_text in review_texts:
-        new_reviews.append(
-            Review(
-                text=review_text,
-                location=new_location
-            )
+        review_to_save = Review(
+            text=review_text,
+            location=new_location
         )
+
+        review_to_save.save()
+
+        new_reviews.append(review_to_save)
 
     return new_reviews
 
@@ -43,6 +45,8 @@ def form_location_and_reviews(row, Location, Review):
             accessibility_rating = row['Accessibility rating (1-5)'],
             capacity = row['Capacity']
         )
+
+        new_location.save()
 
         new_reviews = form_reviews(row, new_location, Review)
 
