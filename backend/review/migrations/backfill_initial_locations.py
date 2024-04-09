@@ -22,10 +22,6 @@ def form_reviews(row, new_location, Review):
 
         review_to_save.save()
 
-        new_reviews.append(review_to_save)
-
-    return new_reviews
-
 def form_location_and_reviews(row, Location, Review):
     new_location = Location (
         type = TYPE_CODE_MAP[row['Type (Restaurant = 0, Hotel = 1, Activity = 2)']],
@@ -44,27 +40,19 @@ def form_location_and_reviews(row, Location, Review):
 
     new_location.save()
 
-    new_reviews = form_reviews(row, new_location, Review)
-
-    return new_location, new_reviews
+    form_reviews(row, new_location, Review)
 
 def collect_locations_and_reviews(Location, Review):
-    formed_locations = []
-    formed_reviews = []
     with open ('review/migrations/data/initial_location_data.csv', encoding='utf8') as file_data:
         reader = csv.DictReader(file_data)
         for row in reader:
-            location, reviews = form_location_and_reviews(row, Location, Review)
-            formed_locations.append(location)
-            formed_reviews = formed_reviews + reviews
-    return formed_locations, formed_reviews
+            form_location_and_reviews(row, Location, Review)
 
 def backfill_initial_locations(apps, schema_editor):
     Location = apps.get_model('location', 'Location')
     Review = apps.get_model('review', 'Review')
-    db_alias = schema_editor.connection.alias
 
-    locations_to_add, reviews_to_add = collect_locations_and_reviews(Location, Review)
+    collect_locations_and_reviews(Location, Review)
 
     
 
