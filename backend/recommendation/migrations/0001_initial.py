@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('confidence', models.DecimalField(decimal_places=2, max_digits=3)),
-                ('location', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='location.location')),
+                ('location', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='location.Location')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
